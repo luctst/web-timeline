@@ -1,0 +1,37 @@
+{
+  "name": "crispy-octo-adventure",
+  "version": "1.0.0",
+  "description": "Octopus is a genus of molluscs of the order Octopods",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luctst/crispy-octo-adventure.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luctst/crispy-octo-adventure/issues"
+  },
+  "homepage": "https://github.com/luctst/crispy-octo-adventure#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.1.3",
+    "browser-sync": "^2.24.7",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.1",
+    "hint": "^3.4.3",
+    "postcss-discard-duplicates": "^4.0.0",
+    "run-sequence": "^2.2.1"
+  }
+}
