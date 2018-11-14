@@ -27,6 +27,7 @@ Gulp.task("createCss", () => {
 Gulp.task("default", ["liveBrowser", "createCss"], () => {
     Gulp.watch("./src/**/*.html", BrowserSync.reload);
     Gulp.watch("./src/**/*.scss", ["createCss"]);
+    Gulp.watch("./src/**/*.js", BrowserSync.reload);
 });
 
 /*
