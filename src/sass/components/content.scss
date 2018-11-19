@@ -1,0 +1,30 @@
+/**
+* Import
+*/
+@import "../helper/variable.scss";
+@import "../helper/mixins.scss";
+@import "../helper/heritage.scss";
+
+/**
+* Content
+*/
+.content{
+    @extend %grid--layout;
+    color: $txt_secondary-color;
+
+    &--date{
+        grid-column: 2 / 2;
+    } 
+    &--cat{
+        grid-column: 3/3;
+    } 
+    &--more{
+        grid-column: 8/8;
+    }
+    &--title{
+        grid-column: 4/7;
+    }
+    &:nth-child(odd) {
+        background-color: $table_bg-primary-color;
+    }
+}

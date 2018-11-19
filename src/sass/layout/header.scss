@@ -1,36 +1,18 @@
+/**
+* Import
+*/
 @import "../helper/variable.scss";
 @import "../helper/mixins.scss";
-/**
-* General
-*/
 
-header{
+/**
+* Header
+*/
+header {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 10em;
-    padding : 1em;
+    padding : 1em 0;
     background-color: $primary-color;
     color :$txt_primary-color;
-    h1{
-        align-self: center;
-    }
 }
-
-header{
-    h1{
-        text-align: center;
-        font-family:SignPainter;
-        font-size: 40px;
-        font-weight: 100;
-        line-height: 0.7em;
-
-        span{
-            font-family: Hominis;
-            font-size: 30px;
-            font-weight: 100;
-        }
-    }
-}
-/**
-* Media queries, smartphone
-*/
