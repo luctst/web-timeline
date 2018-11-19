@@ -1,0 +1,21 @@
+@import "../helper/variable.scss";
+@import "../helper/mixins.scss";
+/**
+* General
+*/
+
+header{
+    display: flex;
+    justify-content: center;
+    height: 10em;
+    padding : 1em;
+    background-color: $primary-color;
+    color :$txt_primary-color;
+    h1{
+        align-self: center;
+    }
+}
+
+/**
+* Media queries, smartphone
+*/

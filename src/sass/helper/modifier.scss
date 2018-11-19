@@ -1,0 +1,26 @@
+/**
+* Title
+*/
+h1 {
+    font-size: 3em;
+    font-weight: bold;
+}
+p{
+    font-family: Roboto;
+}
+button{
+        padding: 1em;
+        background-color: $primary-color;
+        color:$txt_primary-color;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color:white; /* Green */
+    color: $txt_secondary-color;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+}
