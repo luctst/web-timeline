@@ -16,6 +16,21 @@ header{
     }
 }
 
+header{
+    h1{
+        text-align: center;
+        font-family:SignPainter;
+        font-size: 40px;
+        font-weight: 100;
+        line-height: 0.7em;
+
+        span{
+            font-family: Hominis;
+            font-size: 30px;
+            font-weight: 100;
+        }
+    }
+}
 /**
 * Media queries, smartphone
 */

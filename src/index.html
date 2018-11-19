@@ -10,19 +10,20 @@
 
     <body>
         <header>
-            <h1>Evolution of technologies</h1>
+            <h1>The<br> <span>Evolution</span> <br>of<br> <span>technologies</span></h1>
         </header>
+
         <nav>
         
-        </nav>
+        </nav id="">
         
         <section class="contenair">
             
-            <div class="row-filter">
-                <p class="filter-date">Date</p>
-                <p class="filter-cat"> Catégorie</p>
-                <p class="filter-title">Titre</p>
-                <p class="search">Recherche</p>
+            <div class="row-filter" id="js-stickyMenu">
+                <h3 class="filter-date">Date</h3>
+                <h3 class="filter-cat"> Category</h3>
+                <h3 class="filter-title">Title</h3>
+                <p class="search"><Recherche></p>
             </div>
 
             <div class="content">
@@ -36,7 +37,7 @@
                     <p>Launch of GNU GPL</p>
                 </div>
                 <div class="col col-more">
-                    <p><button type="button">Voir + !</button></p>
+                    <p><button type="button">See more !</button></p>
                 </div>
             </div>
 
@@ -51,7 +52,7 @@
                     <p>Launch of GNU GPL</p>
                 </div>
                 <div class="col col-more">
-                        <p><button type="button">Voir + !</button></p>
+                        <p><button type="button">See more !</button></p>
                 </div>
             </div>
             <div class="content">
@@ -65,7 +66,7 @@
                     <p>Launch of GNU GPL</p>
                 </div>
                 <div class="col col-more">
-                        <p><button type="button">Voir + !</button></p>
+                        <p><button type="button">See more !</button></p>
                 </div>
             </div>
             <div class="content">
@@ -79,9 +80,128 @@
                     <p>Launch of GNU GPL</p>
                 </div>
                 <div class="col col-more">
-                        <p><button type="button">Voir + !</button></p>
+                        <p><button type="button">See more !</button></p>
                 </div>
             </div>
+            <div class="content">
+                    <div class="col col-date">
+                        <p> 1989/09/23 </p>
+                    </div>
+                    <div class="col col-cat">
+                        <p> Software </p>
+                    </div>
+                    <div class="col col-title">
+                        <p>Launch of GNU GPL</p>
+                    </div>
+                    <div class="col col-more">
+                            <p><button type="button">See more !</button></p>
+                    </div>
+                </div>
+                <div class="content">
+                        <div class="col col-date">
+                            <p> 1989/09/23 </p>
+                        </div>
+                        <div class="col col-cat">
+                            <p> Software </p>
+                        </div>
+                        <div class="col col-title">
+                            <p>Launch of GNU GPL</p>
+                        </div>
+                        <div class="col col-more">
+                                <p><button type="button">See more !</button></p>
+                        </div>
+                    </div>
+                    <div class="content">
+                            <div class="col col-date">
+                                <p> 1989/09/23 </p>
+                            </div>
+                            <div class="col col-cat">
+                                <p> Software </p>
+                            </div>
+                            <div class="col col-title">
+                                <p>Launch of GNU GPL</p>
+                            </div>
+                            <div class="col col-more">
+                                    <p><button type="button">See more !</button></p>
+                            </div>
+                        </div>
+                        <div class="content">
+                                <div class="col col-date">
+                                    <p> 1989/09/23 </p>
+                                </div>
+                                <div class="col col-cat">
+                                    <p> Software </p>
+                                </div>
+                                <div class="col col-title">
+                                    <p>Launch of GNU GPL</p>
+                                </div>
+                                <div class="col col-more">
+                                        <p><button type="button">See more !</button></p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                    <div class="col col-date">
+                                        <p> 1989/09/23 </p>
+                                    </div>
+                                    <div class="col col-cat">
+                                        <p> Software </p>
+                                    </div>
+                                    <div class="col col-title">
+                                        <p>Launch of GNU GPL</p>
+                                    </div>
+                                    <div class="col col-more">
+                                            <p><button type="button">See more !</button></p>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                        <div class="col col-date">
+                                            <p> 1989/09/23 </p>
+                                        </div>
+                                        <div class="col col-cat">
+                                            <p> Software </p>
+                                        </div>
+                                        <div class="col col-title">
+                                            <p>Launch of GNU GPL</p>
+                                        </div>
+                                        <div class="col col-more">
+                                                <p><button type="button">See more !</button></p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                            <div class="col col-date">
+                                                <p> 1989/09/23 </p>
+                                            </div>
+                                            <div class="col col-cat">
+                                                <p> Software </p>
+                                            </div>
+                                            <div class="col col-title">
+                                                <p>Launch of GNU GPL</p>
+                                            </div>
+                                            <div class="col col-more">
+                                                    <p><button type="button">See more !</button></p>
+                                            </div>
+                                        </div>
         </section>
-    </body>
+
+        <script type="text/javascript">
+            // When the user scrolls the page, execute myFunction 
+            window.onscroll = function() {myFunction()};
+
+            // Get the navbar
+            var navbar = document.getElementById("js-stickyMenu");
+
+            // Get the offset position of the navbar
+            var sticky = navbar.offsetTop;
+
+            // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            function myFunction() {
+                if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("sticky")
+                } else {
+                    navbar.classList.remove("sticky");
+                }
+            }
+            </script>
+        </body>
 </html>

@@ -14,7 +14,8 @@ section {
   justify-items: start;
   align-items: center;
   grid-gap: 1em;
-  padding: 1em; }
+  padding: 0 1em;
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3); }
   .row-filter .filter-date {
     grid-column: 2/2; }
   .row-filter .filter-cat {
@@ -53,7 +54,11 @@ h1 {
   font-size: 3em;
   font-weight: bold; }
 
+h3 {
+  font-size: 1.1em; }
+
 p {
+  font-size: 0.8em;
   font-family: Roboto; }
 
 button {
@@ -73,6 +78,14 @@ button:hover {
   color: #4083A2;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1); }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%; }
+
+.sticky + .content {
+  padding-top: 70px; }
+
 /**
 * General
 */
@@ -86,6 +99,17 @@ header {
   header h1 {
     align-self: center; }
 
+header h1 {
+  text-align: center;
+  font-family: SignPainter;
+  font-size: 40px;
+  font-weight: 100;
+  line-height: 0.7em; }
+  header h1 span {
+    font-family: Hominis;
+    font-size: 30px;
+    font-weight: 100; }
+
 /**
 * Media queries, smartphone
 */
@@ -93,6 +117,3 @@ body {
   max-width: 100%;
   margin: 0;
   padding: 0; }
-
-p {
-  font-family: Roboto; }
