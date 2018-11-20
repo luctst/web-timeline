@@ -1,0 +1,54 @@
+/**
+* Import
+*/
+@import "variable.scss";
+
+/**
+* Button
+*/
+.is__btn {
+    padding: 1em;
+    background-color: $primary-color;
+    color:$txt_primary-color;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.is__btn:hover {
+    background-color:white; /* Green */
+    color: $txt_secondary-color;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+}
+
+/**
+* Title
+*/
+.is__main__title {
+    text-align: center;
+    font-family:SignPainter;
+    line-height: 0.7em;
+    font-size: 3em;
+    font-weight: bold;
+}
+.is__subTitle { 
+    font-size: 1.1em;
+}
+
+/**
+* Text
+*/
+.is--text--content {
+    font-size: 0.8em;
+    font-family: Roboto;
+}
+
+/**
+* Span
+*/
+.is__span__title {
+    font-family: Hominis;
+    font-size: 30px;
+    font-weight: 100;
+}

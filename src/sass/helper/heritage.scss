@@ -1,0 +1,16 @@
+/**
+* Import
+*/
+@import "variable.scss";
+
+/**
+* Grid layout
+*/
+%grid--layout {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 1em;
+    justify-items: start;
+    align-items: center;
+    padding: 1em;
+}
