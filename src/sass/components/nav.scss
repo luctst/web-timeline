@@ -9,10 +9,10 @@
 .sticky{
     position: fixed;
     top: 0;
-    width: 100%; 
+    width: 100%;
 }
-.sticky + .content {
-    padding-top: 70px;
+.sticky + #app {
+    padding-top: 65px;
 }
 
 /**
