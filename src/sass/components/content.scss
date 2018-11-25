@@ -21,7 +21,8 @@
     &--more{
         grid-column: 8/8;
     }
-    &--title{
+    &--title,
+    &--description {
         grid-column: 4/7;
     }
     &:nth-child(odd) {

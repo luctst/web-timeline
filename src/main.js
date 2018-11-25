@@ -18,7 +18,6 @@ const navFixed = () => { // TODO: Fixed navbar
     }
 }
 const createContent = el => { // TODO: Create content
-    // let date = el.gsx$date.$t.split("-").reverse().join("-"); // Format date
     const div = document.createElement("div");
     div.classList.add("content");
     div.innerHTML += `
@@ -29,30 +28,41 @@ const createContent = el => { // TODO: Create content
                 <p class="is__text__content">${el.gsx$category.$t}</p>
             </div>
             <div class="content--title">
-                <p class="is__text__content">${el.gsx$description.$t}</p>
+                <p class="is__text__content">${el.gsx$title.$t}</p>
             </div>
             <div class="content--more">
                 <p><button type="button" class="is__btn">See more !</button></p>
             </div>`;
     app.appendChild(div);
 };
+const createDescription = (el,parent) => {
+    const div = document.createElement("div");
+    div.classList.add("content--description");
+    div.classList.add("active");
+    div.innerHTML += `<p class="is__text__content">${el.gsx$description.$t}</p>`;
+    parent.appendChild(div);
+}
 const renderFirstContent = array => { // TODO: Render content
     let windowSize = window.innerHeight;
     if (windowSize <= 767) {
         for (let i = 0; i < array.length; i++) {
             if (i <= 5) {
                 createContent(array[i]);
+            } else if (i > 5) {
+                break;
             }
         }
     } else {
         for (let i = 0; i < array.length; i++) {
             if (i <= 10) {
                 createContent(array[i]);
+            } else if (i > 10) {
+                break;
             }
         }
     }
 }
-const addContent = async () => {
+const addContent = async () => { // TODO: Add content when scroll bottom of the page.
     try {
         let data = await fetch(spreadsheet);
         let json = await data.json();
@@ -60,7 +70,6 @@ const addContent = async () => {
         let contentDate = document.querySelectorAll(".content--date");
         
         for (let i = 0; contentDate.length <= res.length; i++) {
-            console.log(contentDate.length);
             let getLastDate = contentDate.item(contentDate.length - 1).firstElementChild.textContent;
                 if (res[i].gsx$date.$t === getLastDate) {
                     let id = parseInt(res[i].gsx$id.$t);
@@ -69,6 +78,28 @@ const addContent = async () => {
                 }
             }
         }
+    } catch (error) {
+        console.log(error);
+    }
+}
+const getDescription = async () => {
+    try {
+        let data = await fetch(spreadsheet);
+        let json = await data.json();
+        let res = json.feed.entry;
+        const btn = document.querySelectorAll(".content--more");
+        btn.forEach(el => {
+            el.addEventListener("click", () => {
+                let parent = el.parentNode;
+                let id = el.parentNode.firstElementChild.firstElementChild.textContent;
+                for (let i = 0; i < res.length; i++) {
+                    if (res[i].gsx$date.$t === id) {
+                        createDescription(res[i], parent);
+                        break;
+                    }
+                }
+            });
+        });
     } catch (error) {
         console.log(error);
     }
@@ -83,16 +114,15 @@ const getData = async () => { // TODO: Get data
     }
 }
 
-
 /**
  * Éxecution
-*/
+ */
 document.addEventListener("DOMContentLoad", getData());
+let observer = new MutationObserver(getDescription);
+observer.observe(app, { childList: true});
 document.addEventListener("scroll", () => {
     navFixed();
-    console.log(this.pageYOffset);
-    console.log(document.body.clientHeight);
-    while (this.pageYOffset >= document.body.clientHeight) {
+    if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
         addContent();
     }
 });
