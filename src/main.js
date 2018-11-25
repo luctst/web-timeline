@@ -35,12 +35,16 @@ const createContent = el => { // TODO: Create content
             </div>`;
     app.appendChild(div);
 };
-const createDescription = (el,parent) => {
-    const div = document.createElement("div");
-    div.classList.add("content--description");
-    div.classList.add("active");
-    div.innerHTML += `<p class="is__text__content">${el.gsx$description.$t}</p>`;
-    parent.appendChild(div);
+const createDescription = (el, parent) => {
+    if (parent.lastChild.className === "content--description") {
+        parent.lastChild.classList.add("is__none");
+        parent.removeChild(document.querySelector(".content--description.is__none"));
+    } else {
+        const div = document.createElement("div");
+        div.classList.add("content--description");
+        div.innerHTML += `<p class="is__text__content">${el.gsx$description.$t}</p>`;
+        parent.appendChild(div);
+    }
 }
 const renderFirstContent = array => { // TODO: Render content
     let windowSize = window.innerHeight;
