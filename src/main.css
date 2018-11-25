@@ -26,7 +26,7 @@
     grid-column: 3/3; }
   .content--more {
     grid-column: 8/8; }
-  .content--title {
+  .content--title, .content--description {
     grid-column: 4/7; }
   .content:nth-child(odd) {
     background-color: #F2F7FA; }
@@ -85,6 +85,12 @@ body {
 * Import
 */
 /**
+* Block
+*/
+.is__none {
+  display: none; }
+
+/**
 * Button
 */
 .is__btn {
@@ -120,7 +126,7 @@ body {
 /**
 * Text
 */
-.is--text--content {
+.is__text__content {
   font-size: 0.8em;
   font-family: Roboto; }
 
