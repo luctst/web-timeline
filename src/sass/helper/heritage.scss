@@ -15,10 +15,9 @@
     padding: 1em;
 }
 
-.is__btn {
+%btn {
     padding: 1em;
-    background-color: $primary-color;
-    color:$txt_primary-color;
+    color: $txt_primary-color;
     border-radius: 4px;
     border: none;
     cursor: pointer;

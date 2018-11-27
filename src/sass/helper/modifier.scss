@@ -2,6 +2,7 @@
 * Import
 */
 @import "variable.scss";
+@import "heritage.scss";
 
 /**
 * Block
@@ -13,17 +14,23 @@
 /**
 * Button
 */
+.is__btn {
+    @extend %btn;
+    background: $secondary-color;
+}
 .is__btn:hover {
     background-color:white; /* Green */
     color: $txt_secondary-color;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
 }
-
 .is__btn__important{
-    background-color: $txt_important-color;
+    @extend %btn;
+    background-color: $important-color;
 }
 .is__btn__important:hover{
-    color: $txt_important-color;
+    background: white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+    color: $important-color;
 }
 
 /**
