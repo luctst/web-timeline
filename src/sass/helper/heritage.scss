@@ -14,3 +14,14 @@
     align-items: center;
     padding: 1em;
 }
+
+.is__btn {
+    padding: 1em;
+    background-color: $primary-color;
+    color:$txt_primary-color;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
