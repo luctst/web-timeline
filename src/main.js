@@ -37,7 +37,7 @@ const createContent = el => { // TODO: Create content
                 </div>
                 <div class="content--description is__none">
                     <p class="is__text__content">${el.gsx$description.$t}</p>
-                    <p class="is__text__content"><a href="${el.gsx$article.$t}">${el.gsx$article.$t}</a></p>
+                    <p class="is__text__content"><a href="${el.gsx$article.$t}" target=_blank>${el.gsx$article.$t}</a></p>
                 </div>`;
         app.appendChild(div);
     } else {
@@ -57,7 +57,7 @@ const createContent = el => { // TODO: Create content
                 </div>
                 <div class="content--description is__none">
                     <p class="is__text__content">${el.gsx$description.$t}</p>
-                    <p class="is__text__content"><a href="${el.gsx$article.$t}">${el.gsx$article.$t}</a></p>
+                    <p class="is__text__content"><a href="${el.gsx$article.$t}" target=_blank>${el.gsx$article.$t}</a></p>
                 </div>`;
         app.appendChild(div);
     }
@@ -85,9 +85,8 @@ const renderFirstContent = async () => { // TODO: Render content
                 }
             }
         }
-        getDescription();
     } catch (error) {
-        console.log(error);
+        throw error;
     }
 }
 const addContent = async () => { // TODO: Add content when scroll bottom of the page.
@@ -106,30 +105,27 @@ const addContent = async () => { // TODO: Add content when scroll bottom of the 
             }
         }
     } catch (error) {
-        console.log(error);
+        throw error;
     }
-}
-const getDescription = async () => {
-    const btn = document.querySelectorAll(".content--more");
-    console.log(btn.parentNode);
-    btn.forEach(el => {
-        el.addEventListener("click", () => {
-            let child = el.parentNode.lastElementChild;
-            let classNom = "content--description is__none";
-            if (child.className === classNom) {
-                child.classList.remove("is__none");
-            } else {
-                child.classList.add("is__none");
-            }
-        });
-    });
 }
 
 /**
  * Éxecution
  */
-renderFirstContent();
-document.addEventListener("scroll", () => {
+window.addEventListener("DOMContentLoad", renderFirstContent());
+window.addEventListener("click", (e) => {
+    if (e.target.className === "is__btn" || e.target.className === "is__btn__important") {
+        let parent = e.target.parentNode.parentNode.parentNode;
+        let childLast = parent.lastElementChild;
+        const classNom = "content--description is__none";
+        if (childLast.className === classNom) {
+            childLast.classList.remove("is__none");
+        } else {
+            childLast.classList.add("is__none");
+        }
+    }
+});
+window.addEventListener("scroll", () => {
     navFixed();
     if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
         addContent();
@@ -145,8 +141,8 @@ select.addEventListener("change", async () => {
         res.forEach(el => {
             if (el.gsx$category.$t === categoryValue) {
                 createContent(el);
-            } else if (el.gsx$category.$t === "") {
-                createContent(el);
+            } else {
+                return;
             }
         });
     } catch (error) {
