@@ -7,13 +7,23 @@
 /**
 * Grid layout
 */
-.content, .filter {
+.content, .is__content__important, .filter {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-gap: 1em;
   justify-items: start;
   align-items: center;
   padding: 1em; }
+
+.is__btn, .is__btn__important {
+  padding: 1em;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s; }
 
 /**
 * Content
@@ -40,13 +50,23 @@
 /**
 * Grid layout
 */
-.content, .filter {
+.content, .is__content__important, .filter {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-gap: 1em;
   justify-items: start;
   align-items: center;
   padding: 1em; }
+
+.is__btn, .is__btn__important {
+  padding: 1em;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s; }
 
 /**
 * Js class
@@ -85,6 +105,30 @@ body {
 * Import
 */
 /**
+* Import
+*/
+/**
+* Grid layout
+*/
+.content, .is__content__important, .filter {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1em;
+  justify-items: start;
+  align-items: center;
+  padding: 1em; }
+
+.is__btn, .is__btn__important {
+  padding: 1em;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s; }
+
+/**
 * Block
 */
 .is__none {
@@ -94,21 +138,21 @@ body {
 * Button
 */
 .is__btn {
-  padding: 1em;
-  background-color: #4D9DC2;
-  color: white;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s;
-  /* Safari */
-  transition-duration: 0.4s; }
+  background: #4083A2; }
 
 .is__btn:hover {
   background-color: white;
   /* Green */
   color: #4083A2;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1); }
+
+.is__btn__important {
+  background-color: #FF7B0A; }
+
+.is__btn__important:hover {
+  background: white;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+  color: #FF7B0A; }
 
 /**
 * Title
@@ -127,7 +171,7 @@ body {
 * Text
 */
 .is__text__content {
-  font-size: 0.8em;
+  font-size: 1em;
   font-family: Roboto; }
 
 /**
@@ -137,6 +181,10 @@ body {
   font-family: Hominis;
   font-size: 30px;
   font-weight: 100; }
+
+.is__content__important {
+  background-color: #FFEFDE;
+  color: #FF7B0A; }
 
 /**
 * Import
