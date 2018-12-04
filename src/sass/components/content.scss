@@ -8,7 +8,7 @@
 /**
 * Content
 */
-.content{
+.content {
     @extend %grid--layout;
     color: $txt_secondary-color;
 
@@ -28,4 +28,7 @@
     &:nth-child(odd) {
         background-color: $table_bg-primary-color;
     }
+}
+.is__content__important {
+    @extend %grid--layout;
 }
