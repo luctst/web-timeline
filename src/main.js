@@ -127,9 +127,11 @@ window.addEventListener("click", (e) => {
 });
 window.addEventListener("scroll", () => {
     navFixed();
-    if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
-        addContent();
-    }
+    if (select.value === "") {
+        if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
+            addContent();
+        }
+    };
 });
 select.addEventListener("change", async () => {
     let categoryValue = select.value;
