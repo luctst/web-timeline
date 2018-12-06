@@ -108,32 +108,7 @@ const addContent = async () => { // TODO: Add content when scroll bottom of the 
         throw error;
     }
 }
-
-/**
- * Éxecution
- */
-window.addEventListener("DOMContentLoad", renderFirstContent());
-window.addEventListener("click", (e) => {
-    if (e.target.className === "is__btn" || e.target.className === "is__btn__important") {
-        let parent = e.target.parentNode.parentNode.parentNode;
-        let childLast = parent.lastElementChild;
-        const classNom = "content--description is__none";
-        if (childLast.className === classNom) {
-            childLast.classList.remove("is__none");
-        } else {
-            childLast.classList.add("is__none");
-        }
-    }
-});
-window.addEventListener("scroll", () => {
-    navFixed();
-    if (select.value === "") {
-        if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
-            addContent();
-        }
-    };
-});
-select.addEventListener("change", async () => {
+const filter = async () => { // TODO: Filter event by tag.
     let categoryValue = select.value;
     try {
         let data = await fetch(spreadsheet);
@@ -150,4 +125,31 @@ select.addEventListener("change", async () => {
     } catch (error) {
         throw error;
     }
+};
+const getDescription = element => {
+    if (element.target.className === "is__btn" || element.target.className === "is__btn__important") {
+        let parent = element.target.parentNode.parentNode.parentNode;
+        let childLast = parent.lastElementChild;
+        const classNom = "content--description is__none";
+        if (childLast.className === classNom) {
+            childLast.classList.remove("is__none");
+        } else {
+            childLast.classList.add("is__none");
+        }
+    }
+}
+
+/**
+ * Éxecution
+ */
+window.addEventListener("DOMContentLoaded", renderFirstContent);
+window.addEventListener("click", (event) => getDescription(event));
+window.addEventListener("scroll", () => {
+    navFixed();
+    if (select.value === "") {
+        if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
+            addContent();
+        }
+    };
 });
+select.addEventListener("change", filter);
