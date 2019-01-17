@@ -62,5 +62,4 @@ typings/
 
 # Not need
 .DS_STORE
-.vscode
 package-lock.json
