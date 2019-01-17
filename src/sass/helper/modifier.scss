@@ -16,21 +16,6 @@
 */
 .is__btn {
     @extend %btn;
-    background: $secondary-color;
-}
-.is__btn:hover {
-    background-color:white; /* Green */
-    color: $txt_secondary-color;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
-}
-.is__btn__important{
-    @extend %btn;
-    background-color: $important-color;
-}
-.is__btn__important:hover{
-    background: white;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
-    color: $important-color;
 }
 
 /**
@@ -59,12 +44,6 @@
 * Span
 */
 .is__span__title {
-    font-family: Hominis;
     font-size: 30px;
     font-weight: 100;
-}
-
-.is__content__important{
-    background-color: $background_important-color;
-    color: $important-color;
 }
