@@ -9,7 +9,7 @@ const DeleteDuplicateCss = require("postcss-discard-duplicates");
 const Run = require("run-sequence");
 const HtmlMinify = require("gulp-htmlmin");
 const Image = require("gulp-imagemin");
-let test;
+
 /*
 * TODO: Crée un fichier css en utilisant SASS sur le fichier ./src/sass/main.scss
 */
