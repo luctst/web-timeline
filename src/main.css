@@ -1,0 +1,174 @@
+/**
+* Import
+*/
+/**
+* Import
+*/
+/**
+* Grid layout
+*/
+.content, .filter {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1em;
+  justify-items: start;
+  align-items: center;
+  padding: 1em; }
+
+.is__btn {
+  width: 25%;
+  height: auto;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s; }
+
+/**
+* Content
+*/
+.content {
+  color: #4083A2; }
+  .content--date {
+    grid-column: 2 / 2; }
+  .content--cat {
+    grid-column: 3/3; }
+  .content--more {
+    grid-column: 8/8; }
+  .content--title, .content--description {
+    grid-column: 4/7; }
+  .content:nth-child(odd) {
+    background-color: #F2F7FA; }
+
+/**
+* Import
+*/
+/**
+* Import
+*/
+/**
+* Grid layout
+*/
+.content, .filter {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1em;
+  justify-items: start;
+  align-items: center;
+  padding: 1em; }
+
+.is__btn {
+  width: 25%;
+  height: auto;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s; }
+
+/**
+* Js class
+*/
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%; }
+
+.sticky + #app {
+  padding-top: 65px; }
+
+/**
+* General
+*/
+.filter {
+  background-color: #4083A2;
+  color: white;
+  padding: 0 1em;
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3); }
+  .filter--date {
+    grid-column: 2/2; }
+  .filter--cat {
+    grid-column: 3/3; }
+  .filter--title {
+    grid-column: 4/7; }
+  .filter--search {
+    grid-column: 8/8; }
+
+body {
+  max-width: 100%;
+  margin: 0;
+  padding: 0; }
+
+/**
+* Import
+*/
+/**
+* Import
+*/
+/**
+* Grid layout
+*/
+.content, .filter {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1em;
+  justify-items: start;
+  align-items: center;
+  padding: 1em; }
+
+.is__btn {
+  width: 25%;
+  height: auto;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s; }
+
+/**
+* Block
+*/
+.is__none {
+  display: none; }
+
+/**
+* Button
+*/
+/**
+* Title
+*/
+.is__main__title {
+  text-align: center;
+  font-family: SignPainter;
+  line-height: 0.7em;
+  font-size: 3em;
+  font-weight: bold; }
+
+.is__subTitle {
+  font-size: 1.1em; }
+
+/**
+* Text
+*/
+.is__text__content {
+  font-size: 1em;
+  font-family: Roboto; }
+
+/**
+* Span
+*/
+.is__span__title {
+  font-size: 30px;
+  font-weight: 100; }
+
+/**
+* Import
+*/
+/**
+* Header
+*/
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+  padding: 1em 0;
+  background-color: #4D9DC2;
+  color: white; }

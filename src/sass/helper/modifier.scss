@@ -1,0 +1,49 @@
+/**
+* Import
+*/
+@import "variable.scss";
+@import "heritage.scss";
+
+/**
+* Block
+*/
+.is__none {
+    display: none;
+}
+
+/**
+* Button
+*/
+.is__btn {
+    @extend %btn;
+}
+
+/**
+* Title
+*/
+.is__main__title {
+    text-align: center;
+    font-family:SignPainter;
+    line-height: 0.7em;
+    font-size: 3em;
+    font-weight: bold;
+}
+.is__subTitle { 
+    font-size: 1.1em;
+}
+
+/**
+* Text
+*/
+.is__text__content {
+    font-size: 1em;
+    font-family: Roboto;
+}
+
+/**
+* Span
+*/
+.is__span__title {
+    font-size: 30px;
+    font-weight: 100;
+}
