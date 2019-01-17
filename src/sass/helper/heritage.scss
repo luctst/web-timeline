@@ -4,6 +4,17 @@
 @import "variable.scss";
 
 /**
+* Button
+*/
+%btn {
+    border-radius: 50px 50px 50px 50px;
+    background: $primary-color;
+    width: 15%;
+    height: auto;
+    padding: 8px 55px;
+}
+
+/**
 * Grid layout
 */
 %grid--layout {
@@ -15,8 +26,11 @@
     padding: 1em;
 }
 
-%btn {
-    width: 25%;
+/**
+* Img
+*/
+%img {
+    width: 20%;
     height: auto;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */
