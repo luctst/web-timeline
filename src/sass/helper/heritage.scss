@@ -16,10 +16,8 @@
 }
 
 %btn {
-    padding: 1em;
-    color: $txt_primary-color;
-    border-radius: 4px;
-    border: none;
+    width: 25%;
+    height: auto;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
