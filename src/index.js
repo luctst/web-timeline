@@ -4,12 +4,23 @@
 import React from "react";
 import { render } from "react-dom";
 import css from "./assets/sass/main.scss";
-import img from "./assets/img/react-icon.png";
+import img from "./assets/img/arrow.svg";
+import Header from "./view/components/Header";
+import Nav from "./view/components/Nav";
 
 /**
  * Variables
  */
-const app = document.querySelector("#root");
+// const app = document.querySelector("#root");
+// const navbar = document.getElementById("js-stickyMenu");
+// const dateField = document.querySelector(".is__subTitle");
+// const select = document.querySelector("select");
+// const sticky = navbar.offsetTop;
+// const spreadsheetsId = `1xG2xF92GiSf5yVHU5JFoEHrAvR2ksaMNm7kMHAI4Iyg`;
+// const spreadsheet = `https://spreadsheets.google.com/feeds/list/${spreadsheetsId}/1/public/values?alt=json`;
+// let elementTab = [];
+// let idInit = 0;
+// let dateChronologique = true;
 
 /**
  * Déclaration
@@ -18,14 +29,8 @@ export class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <header>
-                    <img src={img} className="is__img"/>
-                    <h1 className="is__main__title">Web App Boilerplate</h1>
-                </header>
-                <section className="container content">
-                    <h2 className="is__title__secondary">Welcome on your App !! 👋 but what to do now ? </h2>
-                    <p>You can start by editing the index.js file to change your app read the get started section on the <a href="https://github.com/luctst/web-app-boilerplate">README.md</a> file.</p>
-                </section>
+                <Header />
+                <Nav/>
             </React.Fragment>
         );
     }
@@ -34,4 +39,15 @@ export class App extends React.Component {
 /**
  * Éxécution
  */
-render(<App/>, app);
+// window.addEventListener("DOMContentLoaded", () => renderContent(0, 6));
+// window.addEventListener("scroll", () => {
+//     navFixed();
+//     if (select.value === "" && dateChronologique) {
+//         if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
+//             addContent();
+//         }
+//     };
+// });
+// select.addEventListener("change", filter);
+// dateField.addEventListener("click", returnDate);
+render(<App />, app);

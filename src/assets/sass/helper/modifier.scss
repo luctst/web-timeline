@@ -1,25 +1,49 @@
 /**
 * Import
 */
-@import "./variables.scss";
+@import "variable.scss";
+@import "heritage.scss";
+
+/**
+* Block
+*/
+.is__none {
+    display: none;
+}
+
+/**
+* Button
+*/
+.is__btn {
+    @extend %btn;
+}
 
 /**
 * Title
 */
 .is__main__title {
     text-align: center;
-    color: #fff;
-    font-size: 1.7em;
+    font-family:SignPainter;
+    line-height: 0.7em;
+    font-size: 3em;
+    font-weight: bold;
 }
-.is__secondary__title {
-    font-size: 1em;
-    margin-top: 0;
+.is__subTitle { 
+    font-size: 1.1em;
 }
 
 /**
-* Img
+* Text
 */
-.is__img {
-    width: 15%;
-    height: auto;
+.is__text__content {
+    font-size: 1em;
+    font-family: Roboto;
+}
+
+/**
+* Span
+*/
+.is__span__title {
+    font-size: 30px;
+    font-weight: 100;
 }

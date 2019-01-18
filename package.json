@@ -4,13 +4,9 @@
   "description": "Boilerplate for your next web application 🐙 🐙",
   "main": "",
   "scripts": {
-<<<<<<< HEAD
     "test": "",
     "build": "webpack --mode='production'",
     "start": "webpack-dashboard webpack-dev-server"
-=======
-    "test": "nodemon src/main.js"
->>>>>>> 59991b71abad190393aa2d2f4015fa8f181fa839
   },
   "repository": {
     "type": "git",
