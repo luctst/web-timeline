@@ -1,6 +1,6 @@
 /**
-     * Variables
-     */
+* Variables
+*/
 const navbar = document.getElementById("js-stickyMenu");
 const dateField = document.querySelector(".is__subTitle");
 const select = document.querySelector("select");
@@ -37,6 +37,7 @@ const renderContent = async (init, index) => { // TODO: Render element with unkn
         let el = new Element();
         el.createElement(data[i]);
         el.getDescription();
+        el.generatePage();
         elementTab.push(el);
     }
     console.log(elementTab);
@@ -73,6 +74,7 @@ const returnDate = async () => {
             let el = new Element();
             el.createElement(data[i]);
             el.getDescription();
+            el.generatePage();
         }
         dateChronologique = false;
     } else {
@@ -80,6 +82,7 @@ const returnDate = async () => {
             let el = new Element();
             el.createElement(data[i]);
             el.getDescription();
+            el.generatePage();
         }
         dateChronologique = true;
     }
@@ -102,7 +105,7 @@ class Element { // TODO: Class for new Element
                 <p class="is__title__content">${el.gsx$title.$t}</p>
             </div>
             <div class="content--more">
-                <img class="is__img__arrow" src="./img/arrow.svg" alt="Cliquez pour voir la description"/>
+                <img class="is__img__arrow" src="./assets/img/arrow.svg" alt="Cliquez pour voir la description"/>
             </div>
             <div class="content--description is__none">
                 <p class="is__title__content">${el.gsx$description.$t}</p>
@@ -123,6 +126,13 @@ class Element { // TODO: Class for new Element
                 lastChild.classList.add("is__none");
                 elementParent.querySelector(".is__img__arrow").style.transform = "";
             }
+        });
+    }
+    generatePage() {
+        const elementParent = this.html;
+        const btn = elementParent.querySelector(".is__btn");
+        btn.addEventListener("click", () => {
+            fetch(`http://127.0.0.1/message`).then(res => window.open(res));
         });
     }
 }
