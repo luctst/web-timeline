@@ -14,10 +14,14 @@ const Image = require("gulp-imagemin");
 * TODO: Crée un fichier css en utilisant SASS sur le fichier ./src/sass/main.scss
 */
 Gulp.task("createCss", () => {
-    return Gulp.src("./src/sass/main.scss")
+    return Gulp.src("./src/assets/sass/main.scss")
         .pipe(Sass())
         .pipe(Gulp.dest("src/"))
         .pipe(BrowserSync.reload({ stream: true }));
+});
+
+Gulp.task("watch", () => {
+    Gulp.watch("./src/assets/sass/main.scss");
 });
 
 /*
