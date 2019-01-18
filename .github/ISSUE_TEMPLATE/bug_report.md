@@ -15,9 +15,3 @@ Steps to reproduce the behavior:
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
-
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Additional information's**
-Use a label and assign this issue to someone to get your issue done quickly -->
