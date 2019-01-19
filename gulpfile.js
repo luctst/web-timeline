@@ -9,6 +9,7 @@ const DeleteDuplicateCss = require("postcss-discard-duplicates");
 const Run = require("run-sequence");
 const HtmlMinify = require("gulp-htmlmin");
 const Image = require("gulp-imagemin");
+const babel = require("gulp-babel");
 
 /*
 * TODO: Crée un fichier css en utilisant SASS sur le fichier ./src/sass/main.scss
@@ -28,6 +29,15 @@ Gulp.task("default", ["liveBrowser", "createCss"], () => {
     Gulp.watch("./src/**/*.html", BrowserSync.reload);
     Gulp.watch("./src/**/*.scss", ["createCss"]);
     Gulp.watch("./src/**/*.js", BrowserSync.reload);
+});
+
+/**
+ * TODO: ES6 to good JS
+ */
+Gulp.task("js", () => {
+    Gulp.src("./src/main.js")
+        .pipe(babel({ presets: ["@babel/preset-env"], plugins: ["@babel/transform-runtime"] }))
+        .pipe(Gulp.dest("./docs"));
 });
 
 /*
@@ -106,5 +116,5 @@ Gulp.task("minifyCss", () => {
 * TODO: Ensemble de tâches executés l'une à la suite de l'autre
 */
 Gulp.task("build", callback => {
-    return Run("deleteFolder", "minifyIndexFile", "minifyOtherHtmlFile", "minifyImgPerso", "minifyImgPro", "formateCss", "minifyCss", callback);
+    return Run("deleteFolder", "js", "minifyIndexFile", "minifyOtherHtmlFile", "minifyImgPerso", "minifyImgPro", "formateCss", "minifyCss", callback);
 });
