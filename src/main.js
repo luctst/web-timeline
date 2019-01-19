@@ -36,8 +36,7 @@ const renderContent = async (init, index) => { // TODO: Render element with unkn
     for (let i = init; i < index; i++) {
         let el = new Element();
         el.createElement(data[i]);
-        el.getDescription();
-        el.generatePage();
+        el.eventHandler();
         elementTab.push(el);
     }
     console.log(elementTab);
@@ -109,11 +108,12 @@ class Element { // TODO: Class for new Element
             </div>
             <div class="content--description is__none">
                 <p class="is__title__content">${el.gsx$description.$t}</p>
-                <p class="is__btn"><a href="#">See more</a></p>
+                <p class="is__btn"><a>See more</a></p>
             </div>`;
         app.appendChild(div);
         this.html = div;
         this.category = el.gsx$category.$t;
+        this.contnent = el.gsx$content.$t;
     };
     getDescription() {
         const elementParent = this.html;
@@ -132,8 +132,20 @@ class Element { // TODO: Class for new Element
         const elementParent = this.html;
         const btn = elementParent.querySelector(".is__btn");
         btn.addEventListener("click", () => {
-            fetch(`http://127.0.0.1/message`).then(res => window.open(res));
+            fetch("http://localhost:8888/message", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                mode: "no-cors",
+                credentials: "same-origin",
+                body: JSON.stringify(this),
+            });
         });
+    }
+    eventHandler() {
+        this.getDescription();
+        this.generatePage();
     }
 }
 
