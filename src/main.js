@@ -132,14 +132,12 @@ class Element { // TODO: Class for new Element
         const elementParent = this.html;
         const btn = elementParent.querySelector(".is__btn");
         btn.addEventListener("click", () => {
-            fetch("http://localhost:8888/message", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                mode: "no-cors",
-                credentials: "same-origin",
+            fetch('http://localhost:8888/message', {
+                method: 'POST',
                 body: JSON.stringify(this),
+                headers: {
+                    "content-type": "application/json"
+                }
             });
         });
     }
@@ -157,7 +155,7 @@ window.addEventListener("scroll", () => {
     navFixed();
     if (select.value === "" && dateChronologique) {
         if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
-            addContent();
+            // addContent();
         }
     };
 });
