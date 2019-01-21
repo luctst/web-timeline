@@ -16,21 +16,26 @@
 */
 .is__btn {
     @extend %btn;
-    background: $secondary-color;
+    text-align: center;
+    font-size: .9em;
 }
-.is__btn:hover {
-    background-color:white; /* Green */
-    color: $txt_secondary-color;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+.is__btn > a {
+    color: #fff;
+    text-decoration: none;
 }
-.is__btn__important{
-    @extend %btn;
-    background-color: $important-color;
+
+/**
+* Date
+*/
+.is__date:hover {
+    cursor: pointer;
 }
-.is__btn__important:hover{
-    background: white;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
-    color: $important-color;
+
+/**
+* Image
+*/
+.is__img__arrow {
+    @extend %img;
 }
 
 /**
@@ -38,33 +43,44 @@
 */
 .is__main__title {
     text-align: center;
-    font-family:SignPainter;
+    font-family: SignPainter;
     line-height: 0.7em;
     font-size: 3em;
     font-weight: bold;
 }
 .is__subTitle { 
-    font-size: 1.1em;
+    font-size: .9em;
+    font-weight: lighter;
 }
 
 /**
 * Text
 */
+.is__title__content {
+    font-weight: lighter;
+}
 .is__text__content {
-    font-size: 1em;
-    font-family: Roboto;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
 /**
 * Span
 */
 .is__span__title {
-    font-family: Hominis;
     font-size: 30px;
     font-weight: 100;
 }
 
-.is__content__important{
-    background-color: $background_important-color;
-    color: $important-color;
+/**
+* Select
+*/
+.is__select {
+    color: #FFF;
+    background: none;
+    border: none;
+    border-radius: 0;
+}
+.is__select:hover {
+    cursor: pointer;
 }
