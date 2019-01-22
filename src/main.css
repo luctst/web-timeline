@@ -107,6 +107,14 @@ body {
   cursor: pointer; }
 
 /**
+* Sticky
+*/
+.is__sticky {
+  position: fixed;
+  top: 0;
+  width: 100%; }
+
+/**
 * Svg
 */
 .is__svg {
@@ -238,6 +246,14 @@ body {
 
 .is__select:hover {
   cursor: pointer; }
+
+/**
+* Sticky
+*/
+.is__sticky {
+  position: fixed;
+  top: 0;
+  width: 100%; }
 
 /**
 * Svg
