@@ -7,14 +7,6 @@ const fn = require("./src/model/function");
 const port = 8888;
 
 /**
- * Déclaration
- */
-const renderPage = (data, response) => {
-    console.log(data);
-    response.end(`Vous avez clique sur la catégorie ${data.category}`);
-}
-
-/**
  * Éxecution
  */
 http.createServer((req, res) => {
@@ -27,9 +19,7 @@ http.createServer((req, res) => {
         fn.getFile(res, `${__dirname}/src/main.css`);
     } else if (pathname === "/main.js") {
         fn.getFile(res, `${__dirname}/src/main.js`);
-    } else if (pathname === "/assets/img/arrow.svg") {
-        fn.getFile(res, `${__dirname}/src/assets/img/arrow.svg`);
-    } else if (pathname === "/message") {
+    }  else if (pathname === "/message") {
         req.on("data", chunk => {
             data = JSON.parse(chunk.toString());
         }).on("end", () => {
