@@ -105,6 +105,15 @@
 }
 
 /**
+* Sticky
+*/
+.is__sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/**
 * Svg
 */
 .is__svg {
