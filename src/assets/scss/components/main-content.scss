@@ -10,7 +10,7 @@
 .main {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-column-gap: 30px;
+    grid-column-gap: 3rem;
     &--left {
         background-color: #fff;
         padding: 0 2%;
