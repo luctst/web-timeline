@@ -1,0 +1,33 @@
+/**
+* Import
+*/
+@import "../helper/heritage.scss";
+@import "../helper/variable.scss";
+
+/**
+* General
+*/
+.header {
+    &--title {
+        margin: 3rem 0;
+    }
+    &--infobar {
+        div {
+            flex: 0 0 15%;
+        }
+        align-items: center;
+        box-shadow: $shadowBox;
+        display: flex;
+        background-color: #fff;
+        min-height: 11vh;
+        padding-left: 2%;
+        &--search {
+            display: flex;
+            align-items: center;
+            svg {
+                margin-right: 5%;
+                width: 10.5%;
+            }
+        }
+    }
+}

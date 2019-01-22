@@ -1,0 +1,12 @@
+/**
+* Import
+*/
+@import "./helper/variable.scss";
+
+/**
+* Scss
+*/
+body{
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    background-color: $backgroundColor;
+}

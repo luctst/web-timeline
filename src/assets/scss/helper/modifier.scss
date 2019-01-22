@@ -1,0 +1,113 @@
+/**
+* Import
+*/
+@import "./variable.scss";
+
+/**
+* Content
+*/
+.is__sort__date {
+    display: inline-block;
+    font-weight: lighter;
+    margin: 0 5%;
+}
+.is__sort__date > span {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.is__content__element {
+    font-size: .9rem;
+    font-weight: 300;
+    line-height: 1.8rem;
+    letter-spacing: 0.02rem;
+    color: $contentColor;
+}
+.is__content__tag__element {
+    font-size: .7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .02rem;
+    color: $tagColor;
+}
+
+/**
+* Date
+*/
+.is__date {
+    font-size: 1rem;
+    font-weight: bold;
+    color: $contentColor;
+    line-height: 1;
+}
+.is__date__year {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $contentColor;
+    line-height: 1;
+}
+
+/**
+* Input
+*/
+.is__search {
+    border: none;
+    font-size: 1.2rem;
+    outline: none;
+    width: 100%;
+}
+.is__search:hover {
+    border-bottom: 1px solid #333; 
+}
+.is__search:focus {
+    z-index: 1;
+    border-bottom: 1px solid #333;
+    cursor: text;
+}
+
+/**
+* Img
+*/
+.is__element__img {
+    border-radius: 50%;
+    box-shadow: $shadowBox;
+    width: 50%;
+    height: auto;
+}
+
+/**
+* Title
+*/
+.is__main__title {
+    color: $contentColor;
+    font-family: SignPainter;
+    line-height: 0.7em;
+    font-size: 2.5em;
+    font-weight: bold; 
+}
+.is__title__element {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: .06rem;
+    color: $contentColor;
+}
+
+/**
+* Select
+*/
+.is__select {
+    color: $contentColor;
+    background: none;
+    border: none;
+    border-radius: 0; 
+}
+.is__select:hover {
+    cursor: pointer; 
+}
+
+/**
+* Svg
+*/
+.is__svg {
+    width: 8%;
+    height: auto;
+}
