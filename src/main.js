@@ -1,13 +1,13 @@
 /**
 * Variables
 */
-const navbar = document.getElementById("js-stickyMenu");
+const spreadsheetsId = `1xG2xF92GiSf5yVHU5JFoEHrAvR2ksaMNm7kMHAI4Iyg`;
+const spreadsheet = `https://spreadsheets.google.com/feeds/list/${spreadsheetsId}/1/public/values?alt=json`;
+const navbar = document.querySelector(".header--infobar");
 const dateField = document.querySelector(".is__subTitle");
 const select = document.querySelector("select");
 const app = document.getElementById("app");
 const sticky = navbar.offsetTop;
-const spreadsheetsId = `1xG2xF92GiSf5yVHU5JFoEHrAvR2ksaMNm7kMHAI4Iyg`;
-const spreadsheet = `https://spreadsheets.google.com/feeds/list/${spreadsheetsId}/1/public/values?alt=json`;
 let elementTab = [];
 let idInit = 0;
 let dateChronologique = true;
@@ -17,9 +17,9 @@ let dateChronologique = true;
  */
 const navFixed = () => { // TODO: Fixed navbar
     if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
+        navbar.classList.add("is__sticky")
     } else {
-        navbar.classList.remove("sticky");
+        navbar.classList.remove("is__sticky");
     }
 }
 const getData = async bdd => { // TODO: Get data from BDD
@@ -36,10 +36,9 @@ const renderContent = async (init, index) => { // TODO: Render element with unkn
     for (let i = init; i < index; i++) {
         let el = new Element();
         el.createElement(data[i]);
-        el.eventHandler();
+        el.getDescription();
         elementTab.push(el);
     }
-    console.log(elementTab);
 }
 const filter = async () => { // TODO: Filter event by tag.
     app.innerHTML = "";
@@ -113,7 +112,7 @@ class Element { // TODO: Class for new Element
         app.appendChild(div);
         this.html = div;
         this.category = el.gsx$category.$t;
-        this.contnent = el.gsx$content.$t;
+        this.content = el.gsx$content.$t;
     };
     getDescription() {
         const elementParent = this.html;
@@ -127,23 +126,6 @@ class Element { // TODO: Class for new Element
                 elementParent.querySelector(".is__img__arrow").style.transform = "";
             }
         });
-    }
-    generatePage() {
-        const elementParent = this.html;
-        const btn = elementParent.querySelector(".is__btn");
-        btn.addEventListener("click", () => {
-            fetch('http://localhost:8888/message', {
-                method: 'POST',
-                body: JSON.stringify(this),
-                headers: {
-                    "content-type": "application/json"
-                }
-            });
-        });
-    }
-    eventHandler() {
-        this.getDescription();
-        this.generatePage();
     }
 }
 
