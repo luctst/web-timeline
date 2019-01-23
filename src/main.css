@@ -6,7 +6,26 @@
 */
 body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  background-color: #ebf2f5; }
+  background-color: #ebf2f5;
+  font-size: 62.5%; }
+
+h1, h2, h3, p, a {
+  margin: 0; }
+
+p {
+  font-size: 1.4rem; }
+
+h1 {
+  font-size: 2.2rem; }
+
+h2 {
+  font-size: 2rem; }
+
+h3 {
+  font-size: 1.8rem; }
+
+h4 {
+  font-size: 1.8rem; }
 
 /**
 * Import
@@ -20,11 +39,11 @@ body {
   margin: 0 5%; }
 
 .is__sort__date > span {
-  font-size: 1.1em;
+  font-size: 1.1rem;
   font-weight: bold; }
 
 .is__content__element {
-  font-size: .9rem;
+  font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.8rem;
   letter-spacing: 0.02rem;
@@ -83,13 +102,13 @@ body {
 */
 .is__main__title {
   color: #333;
-  font-family: SignPainter;
+  font-family: "helvetica Neue";
   line-height: 0.7em;
-  font-size: 2.5em;
-  font-weight: bold; }
+  font-size: 3rem;
+  font-weight: 300; }
 
 .is__title__element {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
   letter-spacing: .06rem;
   color: #333; }
@@ -165,11 +184,11 @@ body {
   margin: 0 5%; }
 
 .is__sort__date > span {
-  font-size: 1.1em;
+  font-size: 1.1rem;
   font-weight: bold; }
 
 .is__content__element {
-  font-size: .9rem;
+  font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.8rem;
   letter-spacing: 0.02rem;
@@ -228,13 +247,13 @@ body {
 */
 .is__main__title {
   color: #333;
-  font-family: SignPainter;
+  font-family: "helvetica Neue";
   line-height: 0.7em;
-  font-size: 2.5em;
-  font-weight: bold; }
+  font-size: 3rem;
+  font-weight: 300; }
 
 .is__title__element {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
   letter-spacing: .06rem;
   color: #333; }
@@ -276,7 +295,7 @@ body {
 .main {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-column-gap: 30px; }
+  grid-column-gap: 3rem; }
   .main--left {
     grid-column: 1 / -1;
     background-color: #fff;
