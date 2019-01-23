@@ -4,9 +4,11 @@
 const spreadsheetsId = `1xG2xF92GiSf5yVHU5JFoEHrAvR2ksaMNm7kMHAI4Iyg`;
 const spreadsheet = `https://spreadsheets.google.com/feeds/list/${spreadsheetsId}/1/public/values?alt=json`;
 const navbar = document.querySelector(".header--infobar");
+const header = document.querySelector("header");
 const dateField = document.querySelector(".is__subTitle");
+const sectionLeft = document.querySelector(".main--left");
 const select = document.querySelector("select");
-const app = document.getElementById("app");
+const selectValues = ["", "Network", "Launch", "Science", "Security", "Programming", "Ai", "Social-Media", "Design"];
 const sticky = navbar.offsetTop;
 let elementTab = [];
 let idInit = 0;
@@ -17,9 +19,11 @@ let dateChronologique = true;
  */
 const navFixed = () => { // TODO: Fixed navbar
     if (window.pageYOffset >= sticky) {
-        navbar.classList.add("is__sticky")
+        navbar.classList.add("is__sticky");
+        header.classList.add("sticky");
     } else {
         navbar.classList.remove("is__sticky");
+        header.classList.remove("sticky");
     }
 }
 const getData = async bdd => { // TODO: Get data from BDD
@@ -34,96 +38,71 @@ const getData = async bdd => { // TODO: Get data from BDD
 const renderContent = async (init, index) => { // TODO: Render element with unknown index
     const data = await getData(spreadsheet);
     for (let i = init; i < index; i++) {
-        let el = new Element();
-        el.createElement(data[i]);
-        el.getDescription();
-        elementTab.push(el);
+        new Element(data[i]);
     }
+    console.log(elementTab);
 }
-const filter = async () => { // TODO: Filter event by tag.
-    app.innerHTML = "";
-    const categoryValue = select.value;
-    const tabLength = elementTab.length;
-    if (categoryValue === "") {
-        idInit = 0;
-        elementTab = [];
-        renderContent(0, tabLength);
-    } else {
-        const data = await getData(spreadsheet);
-        data.forEach(el => {
-            if (el.gsx$category.$t === categoryValue) {
-                let element = new Element();
-                element.createElement(el);
-                element.getDescription();
-            }
-        });
-    }
-}
+const fillSelectTag = () => { // TODO: Fill the select tag
+    selectValues.forEach(element => {
+        const option = document.createElement("option");
+        if (element === "") {
+            option.value = " ";
+            option.textContent = "Categories";
+            select.appendChild(option);
+        } else {
+            option.value = element;
+            option.textContent = element;
+            select.appendChild(option);
+        }
+    });
+};
 const addContent = async () => { // TODO: Add content when scroll bottom of the page.
     const lastItem = elementTab[elementTab.length - 1].id + 1;
     const position = lastItem + 8;
     renderContent(lastItem, position);
 }
-const returnDate = async () => {
-    app.innerHTML = "";
-    const data = await getData(spreadsheet);
-    if (dateChronologique) {
-        for (let i = elementTab.length - 1; i >= 0; i--) {
-            let el = new Element();
-            el.createElement(data[i]);
-            el.getDescription();
-            el.generatePage();
-        }
-        dateChronologique = false;
-    } else {
-        for (let i = 0; i < elementTab.length; i++) {
-            let el = new Element();
-            el.createElement(data[i]);
-            el.getDescription();
-            el.generatePage();
-        }
-        dateChronologique = true;
-    }
-}
 class Element { // TODO: Class for new Element
-    constructor() {
+    constructor(data) {
         this.id = idInit++;
+        this.createElement(data);
+        elementTab.push(this);
     }
     createElement(el) {
+        this.formatElement(el);
+        this.setImg(this.category);
         const div = document.createElement("div");
-        div.classList.add("content");
+        div.classList.add("main--left--element");
         div.innerHTML += `
-            <div class="content--date">
-                <p class="is__text__content">${el.gsx$date.$t}</p>
-            </div>
-            <div class="content--cat">
-                <p class="is__text__content">${el.gsx$category.$t}</p>
-            </div>
-            <div class="content--title">
-                <p class="is__title__content">${el.gsx$title.$t}</p>
-            </div>
-            <div class="content--more">
-                <img class="is__img__arrow" src="./assets/img/arrow.svg" alt="Cliquez pour voir la description"/>
-            </div>
-            <div class="content--description is__none">
-                <p class="is__title__content">${el.gsx$description.$t}</p>
-                <p class="is__btn"><a>See more</a></p>
-            </div>`;
-        app.appendChild(div);
+        <div class="main--left--element--date">
+            <h3 class="is__date">${this.day} / ${this.month}</h3>
+            <h4 class="is__date__year">${this.year}</h4>
+        </div>
+        <div class="main--left--element--img">
+            <img src="./assets/img/${this.img}" alt="Icon" class="is__element__img"/>
+        </div>
+        <div class="main--left--element--text">
+            <h2 class="is__title__element">${this.title}</h2>
+            <p class="is__content__element">${this.description}</p>
+            <p class="is__content__tag__element">#${this.category}</p>
+        </div>
+        `;
+        sectionLeft.appendChild(div);
         this.html = div;
-        this.category = el.gsx$category.$t;
-        this.content = el.gsx$content.$t;
     };
-    getDescription() {
-        const elementParent = this.html;
-        const lastChild = elementParent.lastChild;
-        elementParent.addEventListener("click", () => {
-            if (lastChild.className === "content--description is__none") {
-                lastChild.classList.remove("is__none");
-                elementParent.querySelector(".is__img__arrow").style.transform = "rotate(180deg)";
-            } else {
-                lastChild.classList.add("is__none");
-                elementParent.querySelector(".is__img__arrow").style.transform = "";
+    formatElement(data) {
+        const dateTab = data.gsx$date.$t.split("-");
+        this.day = dateTab[0];
+        this.month = dateTab[1];
+        this.year = dateTab[2];
+        this.category = data.gsx$category.$t;
+        this.content = data.gsx$content.$t;
+        this.description = data.gsx$description.$t;
+        this.title = data.gsx$title.$t;
+    }
+    setImg(category) {
+        selectValues.forEach(element => {
+            if (category === element) {
+                this.img = `${element}.svg`;
             }
         });
     }
@@ -132,14 +111,21 @@ class Element { // TODO: Class for new Element
 /**
  * Éxecution
  */
-window.addEventListener("DOMContentLoaded", () => renderContent(0, 6));
+window.addEventListener("DOMContentLoaded", () => {
+    fillSelectTag();
+    renderContent(0, 4);
+});
 window.addEventListener("scroll", () => {
     navFixed();
-    if (select.value === "" && dateChronologique) {
+    if (select.value === " " && dateChronologique) {
         if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
-            // addContent();
+            addContent();
         }
     };
 });
-select.addEventListener("change", filter);
-dateField.addEventListener("click", returnDate);
+// select.addEventListener("change", filter);
+// dateField.addEventListener("click", returnDate);
+window.addEventListener("scroll", () => {
+    console.log(this.innerHeight + this.pageYOffset);
+    console.log(document.body.clientHeight);
+});
