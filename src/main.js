@@ -5,27 +5,18 @@ const spreadsheetsId = `1xG2xF92GiSf5yVHU5JFoEHrAvR2ksaMNm7kMHAI4Iyg`;
 const spreadsheet = `https://spreadsheets.google.com/feeds/list/${spreadsheetsId}/1/public/values?alt=json`;
 const navbar = document.querySelector(".header--infobar");
 const header = document.querySelector("header");
-const dateField = document.querySelector(".is__subTitle");
+const dateField = document.querySelector(".header--infobar--date");
 const sectionLeft = document.querySelector(".main--left");
 const select = document.querySelector("select");
-const selectValues = ["", "Network", "Launch", "Science", "Security", "Programming", "Ai", "Social-Media", "Design"];
+const optionValues = document.querySelectorAll("option");
 const sticky = navbar.offsetTop;
 let elementTab = [];
-let idInit = 0;
+let elementFilter = [];
 let dateChronologique = true;
 
 /**
  * Déclaration
  */
-const navFixed = () => { // TODO: Fixed navbar
-    if (window.pageYOffset >= sticky) {
-        navbar.classList.add("is__sticky");
-        header.classList.add("sticky");
-    } else {
-        navbar.classList.remove("is__sticky");
-        header.classList.remove("sticky");
-    }
-}
 const getData = async bdd => { // TODO: Get data from BDD
     try {
         let data = await fetch(bdd);
@@ -35,61 +26,99 @@ const getData = async bdd => { // TODO: Get data from BDD
         throw error;
     }
 }
+const navFixed = () => { // TODO: Fixed navbar
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("is__sticky");
+        header.classList.add("sticky");
+    } else {
+        navbar.classList.remove("is__sticky");
+        header.classList.remove("sticky");
+    }
+}
+const createElement = obj => {
+    const div = document.createElement("div");
+    div.classList.add("main--left--element");
+    div.innerHTML += `
+        <div class="main--left--element--date">
+            <h3 class="is__date">${obj.day} / ${obj.month}</h3>
+            <h4 class="is__date__year">${obj.year}</h4>
+        </div>
+        <div class="main--left--element--img">
+            <img src="./assets/img/${obj.img}" alt="Icon" class="is__element__img"/>
+        </div>
+        <div class="main--left--element--text">
+            <h2 class="is__title__element">${obj.title}</h2>
+            <p class="is__content__element">${obj.description}</p>
+            <p class="is__content__tag__element">#${obj.category} - cliquez pour plus d'informations.</p>
+        </div>`;
+    sectionLeft.appendChild(div);
+    return div;
+}
 const renderContent = async (init, index) => { // TODO: Render element with unknown index
     const data = await getData(spreadsheet);
     for (let i = init; i < index; i++) {
         new Element(data[i]);
     }
-    console.log(elementTab);
 }
-const fillSelectTag = () => { // TODO: Fill the select tag
-    selectValues.forEach(element => {
-        const option = document.createElement("option");
-        if (element === "") {
-            option.value = " ";
-            option.textContent = "Categories";
-            select.appendChild(option);
-        } else {
-            option.value = element;
-            option.textContent = element;
-            select.appendChild(option);
-        }
-    });
-};
 const addContent = async () => { // TODO: Add content when scroll bottom of the page.
-    const lastItem = elementTab[elementTab.length - 1].id + 1;
+    const lastItem = parseInt(elementTab[elementTab.length - 1].id) + 1;
     const position = lastItem + 8;
     renderContent(lastItem, position);
+    console.log(elementTab);
+}
+const filter = async () => { //TODO: Filter date with categories
+    sectionLeft.innerHTML = "";
+    if (select.value === "") {
+        elementTab.forEach(element => {
+            createElement(element);
+        });
+    } else {
+        elementFilter = [];
+        dateChronologique = true;
+        const data = await getData(spreadsheet);
+        data.forEach(element => {
+            if (element.gsx$category.$t === select.value) {
+                new Element(element);
+            }
+        });
+    }
+};
+const returnDate = () => {
+    sectionLeft.innerHTML = "";
+    if (select.value === "") {
+        if (dateChronologique) {
+            for (let i = elementTab.length - 1; i >= 0; i--) {
+                createElement(elementTab[i]);
+            }
+            dateChronologique = false;
+        } else {
+            for (const i of elementTab) {
+                createElement(i);
+            }
+            dateChronologique = true;
+        }
+    } else {
+        if (dateChronologique) {
+            for (let i = elementFilter.length - 1; i >= 0; i--) {
+                createElement(elementFilter[i]);
+            }
+            dateChronologique = false;
+        } else {
+            for (const i of elementFilter) {
+                createElement(i);
+            }
+            dateChronologique = true;
+        }
+    }
 }
 class Element { // TODO: Class for new Element
     constructor(data) {
-        this.id = idInit++;
-        this.createElement(data);
-        elementTab.push(this);
-    }
-    createElement(el) {
-        this.formatElement(el);
+        this.setElementProps(data);
         this.setImg(this.category);
-        const div = document.createElement("div");
-        div.classList.add("main--left--element");
-        div.innerHTML += `
-        <div class="main--left--element--date">
-            <h3 class="is__date">${this.day} / ${this.month}</h3>
-            <h4 class="is__date__year">${this.year}</h4>
-        </div>
-        <div class="main--left--element--img">
-            <img src="./assets/img/${this.img}" alt="Icon" class="is__element__img"/>
-        </div>
-        <div class="main--left--element--text">
-            <h2 class="is__title__element">${this.title}</h2>
-            <p class="is__content__element">${this.description}</p>
-            <p class="is__content__tag__element">#${this.category}</p>
-        </div>
-        `;
-        sectionLeft.appendChild(div);
-        this.html = div;
-    };
-    formatElement(data) {
+        this.pushInGoodTab();
+        this.component.addEventListener("click", () => console.log(this));
+    }
+    setElementProps(data) {
         const dateTab = data.gsx$date.$t.split("-");
         this.day = dateTab[0];
         this.month = dateTab[1];
@@ -98,34 +127,42 @@ class Element { // TODO: Class for new Element
         this.content = data.gsx$content.$t;
         this.description = data.gsx$description.$t;
         this.title = data.gsx$title.$t;
+        this.id = data.gsx$id.$t;
     }
     setImg(category) {
-        selectValues.forEach(element => {
-            if (category === element) {
-                this.img = `${element}.svg`;
+        for (const i of optionValues) {
+            if (category === i.value) {
+                this.img = `${category}.svg`;
             }
-        });
+        }
+    }
+    pushInGoodTab() {
+        if (select.value === "") {
+            let div = createElement(this);
+            this.component = div;
+            elementTab.push(this);
+        } else {
+            let div = createElement(this);
+            this.component = div;
+            elementFilter.push(this);
+        }
+    }
+    showMoreInfo() {
+        console.log(this);
     }
 }
 
 /**
  * Éxecution
  */
-window.addEventListener("DOMContentLoaded", () => {
-    fillSelectTag();
-    renderContent(0, 4);
-});
+window.addEventListener("DOMContentLoaded", () => {renderContent(0, 4)});
 window.addEventListener("scroll", () => {
     navFixed();
-    if (select.value === " " && dateChronologique) {
-        if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
+    if (select.value === "") {
+        if (this.innerHeight + this.pageYOffset === document.body.clientHeight + 48) {
             addContent();
         }
     };
 });
-// select.addEventListener("change", filter);
-// dateField.addEventListener("click", returnDate);
-window.addEventListener("scroll", () => {
-    console.log(this.innerHeight + this.pageYOffset);
-    console.log(document.body.clientHeight);
-});
+select.addEventListener("change", filter);
+dateField.addEventListener("click", returnDate);
