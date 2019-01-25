@@ -39,7 +39,7 @@ const createElement = obj => {
     const div = document.createElement("div");
     div.classList.add("main--left--element");
     div.innerHTML += `
-        <div class="main--left--element--date">
+        <div class="main--left--element--date" data-toggle="modal" data-target="#modal">
             <h3 class="is__date">${obj.day} / ${obj.month}</h3>
             <h4 class="is__date__year">${obj.year}</h4>
         </div>
@@ -116,7 +116,7 @@ class Element { // TODO: Class for new Element
         this.setElementProps(data);
         this.setImg(this.category);
         this.pushInGoodTab();
-        this.component.addEventListener("click", () => console.log(this));
+        this.component.addEventListener("click", () => { this.showMoreInfo() });
     }
     setElementProps(data) {
         const dateTab = data.gsx$date.$t.split("-");
@@ -148,7 +148,6 @@ class Element { // TODO: Class for new Element
         }
     }
     showMoreInfo() {
-        console.log(this);
     }
 }
 
