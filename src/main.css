@@ -169,6 +169,9 @@ h4 {
       margin-right: 5%;
       width: 10.5%; }
 
+.header--infobar--date:hover {
+  cursor: pointer; }
+
 /**
 * Import
 */
@@ -315,3 +318,5 @@ h4 {
         .main--left--element--text h2,
         .main--left--element--text p {
           margin-bottom: 2%; }
+  .main--left--element:hover {
+    cursor: pointer; }
