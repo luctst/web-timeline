@@ -8,13 +8,9 @@
 * Main content
 */
 .main {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-column-gap: 3rem;
     &--left {
-        grid-column: 1 / -1;
         background-color: #fff;
-        padding: 0 2%;
+        padding: 2% 2% 0 2%;
         &--element {
             display: flex;
             margin: 3% 0;
