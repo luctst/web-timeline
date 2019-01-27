@@ -4,10 +4,12 @@
 /**
 * Scss
 */
+html {
+  font-size: 62.5%; }
+
 body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  background-color: #ebf2f5;
-  font-size: 62.5%; }
+  background-color: #ebf2f5; }
 
 h1, h2, h3, p, a {
   margin: 0; }
@@ -39,7 +41,7 @@ h4 {
   margin: 0 5%; }
 
 .is__sort__date > span {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: bold; }
 
 .is__content__element {
@@ -50,7 +52,7 @@ h4 {
   color: #333; }
 
 .is__content__tag__element {
-  font-size: .7rem;
+  font-size: 1.2rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: .02rem;
@@ -60,7 +62,8 @@ h4 {
 * Date
 */
 .is__date {
-  font-size: 1rem;
+  padding-top: 1rem;
+  font-size: 1.4rem;
   font-weight: bold;
   color: #333;
   line-height: 1; }
@@ -69,6 +72,7 @@ h4 {
   font-size: 2rem;
   font-weight: bold;
   color: #333;
+  letter-spacing: .3rem;
   line-height: 1; }
 
 /**
@@ -108,9 +112,9 @@ h4 {
   font-weight: 300; }
 
 .is__title__element {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  letter-spacing: .06rem;
+  letter-spacing: .1rem;
   color: #333; }
 
 /**
@@ -120,7 +124,8 @@ h4 {
   color: #333;
   background: none;
   border: none;
-  border-radius: 0; }
+  border-radius: 0;
+  font-size: 1.4rem; }
 
 .is__select:hover {
   cursor: pointer; }
@@ -187,7 +192,7 @@ h4 {
   margin: 0 5%; }
 
 .is__sort__date > span {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: bold; }
 
 .is__content__element {
@@ -198,7 +203,7 @@ h4 {
   color: #333; }
 
 .is__content__tag__element {
-  font-size: .7rem;
+  font-size: 1.2rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: .02rem;
@@ -208,7 +213,8 @@ h4 {
 * Date
 */
 .is__date {
-  font-size: 1rem;
+  padding-top: 1rem;
+  font-size: 1.4rem;
   font-weight: bold;
   color: #333;
   line-height: 1; }
@@ -217,6 +223,7 @@ h4 {
   font-size: 2rem;
   font-weight: bold;
   color: #333;
+  letter-spacing: .3rem;
   line-height: 1; }
 
 /**
@@ -256,9 +263,9 @@ h4 {
   font-weight: 300; }
 
 .is__title__element {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  letter-spacing: .06rem;
+  letter-spacing: .1rem;
   color: #333; }
 
 /**
@@ -268,7 +275,8 @@ h4 {
   color: #333;
   background: none;
   border: none;
-  border-radius: 0; }
+  border-radius: 0;
+  font-size: 1.4rem; }
 
 .is__select:hover {
   cursor: pointer; }
@@ -297,15 +305,22 @@ h4 {
 */
 .main--left {
   background-color: #fff;
-  padding: 2% 2% 0 2%; }
+  padding: 2% 2% 2% 2%; }
   .main--left--element {
-    display: flex;
-    margin: 3% 0;
-    justify-content: space-around; }
-    .main--left--element--date, .main--left--element--img {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column: span 8;
+    margin: 3% 0; }
+    .main--left--element--date {
+      grid-column: 1/2;
+      text-align: center;
+      position: relative; }
+    .main--left--element--img {
+      grid-column: 2/3;
       text-align: center;
       position: relative; }
     .main--left--element--text {
+      grid-column: 3/9;
       border: 0.1rem solid #dbe8fa;
       padding: 15px 10px;
       border-radius: .8rem;

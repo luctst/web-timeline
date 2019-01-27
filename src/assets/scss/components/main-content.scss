@@ -8,15 +8,23 @@
 * Main content
 */
 .main {
+    
     &--left {
         background-color: #fff;
-        padding: 2% 2% 0 2%;
+        padding: 2% 2% 2% 2%;
+
         &--element {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-column: span 8;
             margin: 3% 0;
-            justify-content: space-around;
-            &--date,
+            &--date{
+                grid-column: 1/2;
+                text-align: center;
+                position: relative;                
+            }
             &--img {
+                grid-column: 2/3;
                 text-align: center;
                 position: relative; 
             } 
@@ -33,6 +41,7 @@
             //     z-index: -1;
             // }
             &--text {
+                grid-column: 3/9;
                 border: 0.1rem solid #dbe8fa;
                 padding: 15px 10px;
                 border-radius: .8rem;
