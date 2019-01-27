@@ -115,6 +115,8 @@
     top: 0;
     width: 100%;
     z-index: 10;
+    min-height: 5rem;
+
 }
 .sticky + #app {
     padding-top: 65px; 

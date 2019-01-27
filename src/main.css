@@ -137,7 +137,8 @@ h4 {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10; }
+  z-index: 10;
+  min-height: 5rem; }
 
 .sticky + #app {
   padding-top: 65px; }
@@ -163,7 +164,7 @@ h4 {
   box-shadow: 0 1px 5px 0 rgba(141, 173, 229, 0.27);
   display: flex;
   background-color: #fff;
-  min-height: 11vh;
+  min-height: 5rem;
   padding-left: 2%; }
   .header--infobar div {
     flex: 0 0 15%; }
@@ -288,7 +289,8 @@ h4 {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10; }
+  z-index: 10;
+  min-height: 5rem; }
 
 .sticky + #app {
   padding-top: 65px; }
@@ -328,6 +330,8 @@ h4 {
       .main--left--element--text h2,
       .main--left--element--text p {
         margin-bottom: 2%; }
+      .main--left--element--text:hover {
+        box-shadow: 0 1px 5px 0 rgba(141, 173, 229, 0.27); }
 
 .main--left--element:hover {
   cursor: pointer; }
