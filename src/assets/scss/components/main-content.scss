@@ -10,13 +10,12 @@
 .main {
     &--left {
         background-color: #fff;
-        padding: 2% 2% 2% 2%;
-
+        padding: 2% 1%;
         &--element {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
             grid-column: span 8;
-            margin: 3% 0;
+            margin-bottom: 2%;
             &--date{
                 grid-column: 1/2;
                 text-align: center;
@@ -27,18 +26,15 @@
                 text-align: center;
                 position: relative; 
             } 
-            // &--img::before,
-            // &--img::after {
-            //     content: "";
-            //     border: 2px dotted #333;
-            //     display: inline-block;
-            //     position: absolute;
-            //     height: 232px;
-            //     transform: translateY(-9%);
-            //     top: 0%;
-            //     left: 50%;
-            //     z-index: -1;
-            // }
+            &--img::before {
+                content: "";
+                height: 100%;
+                border: 1.5px dotted #cccccc;
+                display: inline-block;
+                position: absolute;
+                top: 0%;
+                left: 50%;
+            }
             &--text {
                 grid-column: 3/9;
                 border: 0.1rem solid #dbe8fa;
