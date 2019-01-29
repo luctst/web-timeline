@@ -8,13 +8,16 @@
 * General
 */
 .header {
+    
     &--title {
         margin: 3rem 0;
     }
     &--infobar {
+
         div {
             flex: 0 0 15%;
         }
+        height: 5rem;
         align-items: center;
         box-shadow: $shadowBox;
         display: flex;
