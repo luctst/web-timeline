@@ -42,9 +42,11 @@ const navFixed = () => { // TODO: Fixed navbar
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("is__sticky");
         header.classList.add("sticky");
+        header.classList.add("container");
     } else {
         navbar.classList.remove("is__sticky");
         header.classList.remove("sticky");
+        header.classList.remove("container");
     }
 }
 const createElement = obj => {
