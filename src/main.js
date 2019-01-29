@@ -153,7 +153,6 @@ class Element { // TODO: Class for new Element
         }
     }
     showMoreInfo() {
-        alert(`bonjour ${this.id}`);
     }
 }
 
