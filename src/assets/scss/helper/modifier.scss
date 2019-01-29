@@ -41,7 +41,7 @@
     line-height: 1;
 }
 .is__date__year {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     color: $contentColor;
     letter-spacing: .3rem;
@@ -128,8 +128,4 @@
 .is__svg {
     width: 8%;
     height: auto;
-}
-
-.is__content__visible{
-    grid-column: 1/1;
 }
