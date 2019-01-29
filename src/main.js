@@ -23,7 +23,6 @@ const select = document.querySelector("select");
 const optionValues = document.querySelectorAll("option");
 const sticky = navbar.offsetTop;
 let elementTab = [];
-let elementFilter = [];
 let dateChronologique = true;
 
 /**
@@ -74,11 +73,6 @@ const renderContent = async (init) => { // TODO: Render element with unknown ind
         new Element(data[i]);
     }
 }
-const addContent = async () => { // TODO: Add content when scroll bottom of the page.
-    const lastItem = parseInt(elementTab[elementTab.length - 1].id) + 1;
-    const position = lastItem + 8;
-    renderContent(lastItem, position);
-}
 const filter = async () => { //TODO: Filter date with categories
     sectionLeft.innerHTML = "";
     if (select.value === "") {
@@ -86,12 +80,10 @@ const filter = async () => { //TODO: Filter date with categories
             createElement(element);
         });
     } else {
-        elementFilter = [];
         dateChronologique = true;
-        const data = await getData(spreadsheet);
-        data.forEach(element => {
-            if (element.gsx$category.$t === select.value) {
-                new Element(element);
+        elementTab.forEach(element => {
+            if (element.category === select.value) {
+                createElement(element);
             }
         });
     }
