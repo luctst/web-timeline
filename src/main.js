@@ -64,7 +64,6 @@ const createElement = obj => {
             <p class="is__content__element">${obj.description}</p>
             <p class="is__content__tag__element">#${obj.category} - cliquez pour plus d'informations.</p>
         </div>`;
-    sectionLeft.classList.add("is__content__invisible");
     sectionLeft.appendChild(div);
     return div;
 }
