@@ -8,8 +8,10 @@
 * Main content
 */
 .main {
-    
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
     &--left {
+        grid-column: 1 / -1;
         background-color: #fff;
         padding: 2% 2% 2% 2%;
 
