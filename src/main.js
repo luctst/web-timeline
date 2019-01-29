@@ -78,7 +78,6 @@ const addContent = async () => { // TODO: Add content when scroll bottom of the 
     const lastItem = parseInt(elementTab[elementTab.length - 1].id) + 1;
     const position = lastItem + 8;
     renderContent(lastItem, position);
-    console.log(elementTab);
 }
 const filter = async () => { //TODO: Filter date with categories
     sectionLeft.innerHTML = "";
@@ -162,6 +161,7 @@ class Element { // TODO: Class for new Element
         }
     }
     showMoreInfo() {
+        alert(`bonjour ${this.id}`);
     }
 }
 
