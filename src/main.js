@@ -64,9 +64,30 @@ const createElement = obj => {
             <p class="is__content__element">${obj.description}</p>
             <p class="is__content__tag__element">#${obj.category} - cliquez pour plus d'informations.</p>
         </div>`;
+    sectionLeft.classList.add("is__content__invisible");
     sectionLeft.appendChild(div);
     return div;
 }
+const createContentSection = obj => {
+    const section = document.createElement("section");
+    section.classList.add("main--right");
+    section.innerHTML = `
+    <div class="main--right--element">
+        <div class="main--right--element--description">
+            <h2 class="is__">Overview</h2>
+            <p>${obj.content}</p>
+            <h2 class="is__">Links</h2>
+        </div>
+        <div class="main--right--element--related">
+            <h2 class="is__">Related</h2>
+            <h3></h3>
+            <p>${obj.category}</p>
+            <h3></h3>
+        </div>
+    </div>`;
+    app.appendChild(section);
+    
+};
 const renderContent = async (init) => { // TODO: Render element with unknown index
     const data = await getData(spreadsheet);
     for (let i = init; i < data.length; i++) {
@@ -153,7 +174,6 @@ class Element { // TODO: Class for new Element
         }
     }
     showMoreInfo() {
-        alert(`bonjour ${this.id}`);
     }
 }
 
