@@ -168,13 +168,10 @@ class Element { // TODO: Class for new Element
  */
 window.addEventListener("DOMContentLoaded", () => {renderContent(0, 4)});
 window.addEventListener("scroll", () => {
-    let pxTotalScroll = window.innerHeight - document.querySelector('main').offsetHeight;
-    console.log(pxTotalScroll);
-    let halfPxScoll = Math.round(pxTotalScroll / 2);
     navFixed();
-    // if (select.value === "") {
-    //     // if (window.innerHeight + window.pageYOffset === document.body.clientHeight + 30) addContent();
-    // };
+    if (select.value === "") {
+        if (window.innerHeight + window.pageYOffset === document.body.clientHeight + 30) addContent();
+    };
 });
 select.addEventListener("change", filter);
 dateField.addEventListener("click", returnDate);
