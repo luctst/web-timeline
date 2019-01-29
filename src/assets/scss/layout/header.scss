@@ -8,16 +8,18 @@
 * General
 */
 .header {
-    
     &--title {
         margin: 3rem 0;
     }
     &--infobar {
-
+        &--date {
+            display: flex;
+            align-items: center;
+        }
         div {
             flex: 0 0 15%;
         }
-        height: 5rem;
+        height: 6rem;
         align-items: center;
         box-shadow: $shadowBox;
         display: flex;
@@ -28,7 +30,7 @@
             align-items: center;
             svg {
                 margin-right: 5%;
-                width: 10.5%;
+                width: 11.5%;
             }
         }
     }
