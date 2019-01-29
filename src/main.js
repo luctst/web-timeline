@@ -1,4 +1,16 @@
 /**
+ * Import
+ */
+import "./assets/scss/main.scss";
+import "./assets/img/Network.svg";
+import "./assets/img/Launch.svg";
+import "./assets/img/Ai.svg";
+import "./assets/img/arrow.svg";
+import "./assets/img/Programming.svg";
+import "./assets/img/Science.svg";
+import "./assets/img/Security.svg";
+
+/**
 * Variables
 */
 const spreadsheetsId = `1xG2xF92GiSf5yVHU5JFoEHrAvR2ksaMNm7kMHAI4Iyg`;
@@ -44,7 +56,7 @@ const createElement = obj => {
             <h4 class="is__date__year">${obj.year}</h4>
         </div>
         <div class="main--left--element--img">
-            <img src="./assets/img/${obj.img}" alt="Icon" class="is__element__img"/>
+            <img src="./img/${obj.img}" alt="Icon" class="is__element__img"/>
         </div>
         <div class="main--left--element--text">
             <h2 class="is__title__element">${obj.title}</h2>
@@ -156,12 +168,13 @@ class Element { // TODO: Class for new Element
  */
 window.addEventListener("DOMContentLoaded", () => {renderContent(0, 4)});
 window.addEventListener("scroll", () => {
+    let pxTotalScroll = window.innerHeight - document.querySelector('main').offsetHeight;
+    console.log(pxTotalScroll);
+    let halfPxScoll = Math.round(pxTotalScroll / 2);
     navFixed();
-    if (select.value === "") {
-        if (this.innerHeight + this.pageYOffset === document.body.clientHeight + 48) {
-            addContent();
-        }
-    };
+    // if (select.value === "") {
+    //     // if (window.innerHeight + window.pageYOffset === document.body.clientHeight + 30) addContent();
+    // };
 });
 select.addEventListener("change", filter);
 dateField.addEventListener("click", returnDate);
