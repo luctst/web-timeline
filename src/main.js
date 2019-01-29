@@ -68,9 +68,9 @@ const createElement = obj => {
     sectionLeft.appendChild(div);
     return div;
 }
-const renderContent = async (init, index) => { // TODO: Render element with unknown index
+const renderContent = async (init) => { // TODO: Render element with unknown index
     const data = await getData(spreadsheet);
-    for (let i = init; i < index; i++) {
+    for (let i = init; i < data.length; i++) {
         new Element(data[i]);
     }
 }
@@ -168,12 +168,7 @@ class Element { // TODO: Class for new Element
 /**
  * Éxecution
  */
-window.addEventListener("DOMContentLoaded", () => {renderContent(0, 4)});
-window.addEventListener("scroll", () => {
-    navFixed();
-    if (select.value === "") {
-        if (window.innerHeight + window.pageYOffset === document.body.clientHeight + 30) addContent();
-    };
-});
+window.addEventListener("DOMContentLoaded", () => {renderContent(0)});
+window.addEventListener("scroll", () => navFixed());
 select.addEventListener("change", filter);
 dateField.addEventListener("click", returnDate);
