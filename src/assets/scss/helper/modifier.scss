@@ -4,17 +4,24 @@
 @import "./variable.scss";
 
 /**
-* Content
+* A
 */
-.is__sort__date {
-    display: inline-block;
-    font-weight: lighter;
-    margin: 0 5%;
-}
-.is__sort__date > span {
-    font-size: 1.4rem;
+.is__arrow__close {
+    color: #aaaaaa;
+    font-size: 28px;
     font-weight: bold;
 }
+.is__arrow__close:hover {
+    cursor: pointer;
+}
+
+/**
+* B
+*/
+
+/**
+* C
+*/
 .is__content__element {
     font-size: 1.4rem;
     font-weight: 300;
@@ -31,7 +38,7 @@
 }
 
 /**
-* Date
+* D
 */
 .is__date {
     font-size: 1.4rem;
@@ -49,25 +56,7 @@
 }
 
 /**
-* Input
-*/
-.is__search {
-    border: none;
-    font-size: 1.2rem;
-    outline: none;
-    width: 100%;
-}
-.is__search:hover {
-    border-bottom: 1px solid #333; 
-}
-.is__search:focus {
-    z-index: 1;
-    border-bottom: 1px solid #333;
-    cursor: text;
-}
-
-/**
-* Img
+* E
 */
 .is__element__img {
     border-radius: 50%;
@@ -77,7 +66,35 @@
 }
 
 /**
-* Title
+* F
+*/
+
+/**
+* G
+*/
+
+/**
+* H
+*/
+
+/**
+* I
+*/
+
+/**
+* J
+*/
+
+/**
+* K
+*/
+
+/**
+* L
+*/
+
+/**
+* M
 */
 .is__main__title {
     color: $contentColor;
@@ -86,30 +103,69 @@
     font-size: 3rem;
     font-weight: 300; 
 }
-.is__title__element {
-    font-size: 1.8rem;
-    font-weight: bold;
-    letter-spacing: .1rem;
-    color: $contentColor;
+
+/**
+* N
+*/
+.is__none {
+    display: none;
 }
 
 /**
-* Select
+* O
 */
+.is__overflow__hidden {
+    overflow: hidden;
+}
+
+/**
+* P
+*/
+
+/**
+* Q
+*/
+
+/**
+* R
+*/
+
+/**
+* S
+*/
+.is__search {
+    border: none;
+    font-size: 1.6rem;
+    outline: none;
+    width: 100%;
+}
+.is__search:hover {
+    border-bottom: 1px solid #333; 
+}
+.is__search:focus {
+    border-bottom: 1px solid #333;
+    cursor: text;
+}
 .is__select {
     color: $contentColor;
     background: none;
     border: none;
     border-radius: 0; 
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 .is__select:hover {
     cursor: pointer; 
 }
-
-/**
-* Sticky
-*/
+.is__sort__date {
+    font-size: 1.6rem;
+    display: inline-block;
+    font-weight: lighter;
+    margin: 0 5%;
+}
+.is__sort__date > span {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
 .is__sticky {
     position: fixed;    
     top: 0;
@@ -121,11 +177,41 @@
 .sticky + #app {
     padding-top: 65px; 
 }
-
-/**
-* Svg
-*/
 .is__svg {
-    width: 8%;
+    width: 10%;
     height: auto;
 }
+
+/**
+* T
+*/
+.is__title__element {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: .1rem;
+    color: $contentColor;
+}
+
+/**
+* U
+*/
+
+/**
+* V
+*/
+
+/**
+* W
+*/
+
+/**
+* X
+*/
+
+/**
+* Y
+*/
+
+/**
+* Z
+*/
