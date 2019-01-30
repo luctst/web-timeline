@@ -1,6 +1,7 @@
 /**
  * Import
  */
+import Element from "./model/Element";
 import "./assets/scss/main.scss";
 import "./assets/img/Network.svg";
 import "./assets/img/Launch.svg";
@@ -19,8 +20,10 @@ const navbar = document.querySelector(".header--infobar");
 const header = document.querySelector("header");
 const dateField = document.querySelector(".header--infobar--date");
 const sectionLeft = document.querySelector(".main--left");
+const sectionRight = document.querySelector(".main--right");
 const select = document.querySelector("select");
 const optionValues = document.querySelectorAll("option");
+const svgChronologique = document.querySelector(".chronologique");
 const sticky = navbar.offsetTop;
 let elementTab = [];
 let dateChronologique = true;
@@ -62,35 +65,42 @@ const createElement = obj => {
         <div class="main--left--element--text">
             <h2 class="is__title__element">${obj.title}</h2>
             <p class="is__content__element">${obj.description}</p>
-            <p class="is__content__tag__element">#${obj.category} - cliquez pour plus d'informations.</p>
+            <p class="is__content__tag__element">#${obj.category}.</p>
         </div>`;
     sectionLeft.appendChild(div);
     return div;
 }
 const createContentSection = obj => {
-    const section = document.createElement("section");
-    section.classList.add("main--right");
-    section.innerHTML = `
+    document.body.classList.add("is__overflow__hidden"); 
+    sectionRight.classList.remove("is__none");
+    sectionRight.innerHTML = `
     <div class="main--right--element">
-        <div class="main--right--element--description">
-            <h2 class="is__">Overview</h2>
-            <p>${obj.content}</p>
-            <h2 class="is__">Links</h2>
-        </div>
-        <div class="main--right--element--related">
-            <h2 class="is__">Related</h2>
-            <h3></h3>
-            <p>${obj.category}</p>
-            <h3></h3>
+        <div class="main--right--element--wrapper">
+            <div class="main--right--element--wrapper--description">
+                <span class="is__arrow__close">&times;</span>
+                <h2 class="is__">Overview</h2>
+                <p>${obj.content}</p>
+                <h2 class="is__">Links</h2>
+            </div>
+            <div class="main--right--element--wrapper--related">
+                <h2 class="is__">Related</h2>
+                <h3></h3>
+                <p>${obj.category}</p>
+                <h3></h3>
+            </div>
         </div>
     </div>`;
-    app.appendChild(section);
-    
+    const arrowClose = document.querySelector(".is__arrow__close");
+    arrowClose.addEventListener("click", () => {
+        sectionRight.innerHTML = "";
+        sectionRight.classList.add("is__none");
+        document.body.classList.remove("is__overflow__hidden"); 
+    });
 };
-const renderContent = async (init) => { // TODO: Render element with unknown index
+const renderContent = async () => { // TODO: Render element
     const data = await getData(spreadsheet);
-    for (let i = init; i < data.length; i++) {
-        new Element(data[i]);
+    for (let i = 0; i < data.length; i++) {
+        new Element(data[i], optionValues, select, createElement, elementTab, createContentSection);
     }
 }
 const filter = async () => { //TODO: Filter date with categories
@@ -112,11 +122,13 @@ const returnDate = () => {
     sectionLeft.innerHTML = "";
     if (select.value === "") {
         if (dateChronologique) {
+            svgChronologique.style.transform = 'rotate(180deg)';
             for (let i = elementTab.length - 1; i >= 0; i--) {
                 createElement(elementTab[i]);
             }
             dateChronologique = false;
         } else {
+            svgChronologique.style.transform = '';   
             for (const i of elementTab) {
                 createElement(i);
             }
@@ -124,62 +136,27 @@ const returnDate = () => {
         }
     } else {
         if (dateChronologique) {
-            for (let i = elementFilter.length - 1; i >= 0; i--) {
-                createElement(elementFilter[i]);
+            for (let i = elementTab.length - 1; i >= 0; i--) {
+                if (select.value === elementTab[i].category) {
+                    createElement(elementTab[i]);
+                }
             }
             dateChronologique = false;
         } else {
-            for (const i of elementFilter) {
-                createElement(i);
+            for (const i of elementTab) {
+                if (select.value === i.category) {
+                    createElement(i);
+                }
             }
             dateChronologique = true;
         }
-    }
-}
-class Element { // TODO: Class for new Element
-    constructor(data) {
-        this.setElementProps(data);
-        this.setImg(this.category);
-        this.pushInGoodTab();
-        this.component.addEventListener("click", () => { this.showMoreInfo() });
-    }
-    setElementProps(data) {
-        const dateTab = data.gsx$date.$t.split("-");
-        this.day = dateTab[0];
-        this.month = dateTab[1];
-        this.year = dateTab[2];
-        this.category = data.gsx$category.$t;
-        this.content = data.gsx$content.$t;
-        this.description = data.gsx$description.$t;
-        this.title = data.gsx$title.$t;
-        this.id = data.gsx$id.$t;
-    }
-    setImg(category) {
-        for (const i of optionValues) {
-            if (category === i.value) {
-                this.img = `${category}.svg`;
-            }
-        }
-    }
-    pushInGoodTab() {
-        if (select.value === "") {
-            let div = createElement(this);
-            this.component = div;
-            elementTab.push(this);
-        } else {
-            let div = createElement(this);
-            this.component = div;
-            elementFilter.push(this);
-        }
-    }
-    showMoreInfo() {
     }
 }
 
 /**
  * Éxecution
  */
-window.addEventListener("DOMContentLoaded", () => {renderContent(0)});
+window.addEventListener("DOMContentLoaded", () => {renderContent()});
 window.addEventListener("scroll", () => navFixed());
 select.addEventListener("change", filter);
 dateField.addEventListener("click", returnDate);
