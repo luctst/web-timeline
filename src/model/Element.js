@@ -6,7 +6,6 @@ export default class Element { // TODO: Class for new Element
         this.setElementProps(data);
         this.setImg(this.category, option);
         this.pushInGoodTab(select, fn, tab);
-        this.component.addEventListener("click", () => { this.showMoreInfo(fnContent) });
     }
     setElementProps(data) {
         const dateTab = data.gsx$date.$t.split("-");
@@ -17,7 +16,7 @@ export default class Element { // TODO: Class for new Element
         this.content = data.gsx$content.$t;
         this.description = data.gsx$description.$t;
         this.title = data.gsx$title.$t;
-        this.id = data.gsx$id.$t;
+        this.id = data.gsx$id.$t -1;
     }
     setImg(category, option) {
         for (const i of option) {
@@ -35,8 +34,5 @@ export default class Element { // TODO: Class for new Element
             let div = fn(this);
             this.component = div;
         }
-    }
-    showMoreInfo(fnContent) {
-        fnContent(this);
     }
 }
