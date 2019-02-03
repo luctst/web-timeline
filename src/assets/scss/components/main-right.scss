@@ -1,0 +1,29 @@
+/**
+* Import
+*/
+@import "../helper/modifier.scss";
+@import "../helper/variable.scss";
+
+/**
+* Main--right
+*/
+.main--right {
+    &--element {
+        background-color: rgba(0,0,0,0.4); 
+        height: 100%;  
+        left: 0;
+        padding-top: 20%;
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        &--wrapper {
+            display: grid;
+            grid-template-columns: 1fr 25%;
+            grid-template-rows: 80% 20%;
+            background-color: #fff;
+            padding: 1%;
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+}

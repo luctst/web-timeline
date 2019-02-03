@@ -1,0 +1,40 @@
+/**
+* Import
+*/
+@import "../helper/heritage.scss";
+@import "../helper/variable.scss";
+
+/**
+* General
+*/
+.header {
+    &--title {
+        margin: 3rem 0;
+    }
+    &--infobar {
+        &--date {
+            display: flex;
+            align-items: center;
+        }
+        div {
+            flex: 0 0 15%;
+        }
+        height: 6rem;
+        align-items: center;
+        box-shadow: $shadowBox;
+        display: flex;
+        background-color: #fff;
+        padding-left: 2%;
+        &--search {
+            display: flex;
+            align-items: center;
+            svg {
+                margin-right: 5%;
+                width: 11.5%;
+            }
+        }
+    }
+    &--infobar--date:hover {
+        cursor: pointer;
+    }
+}

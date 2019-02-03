@@ -1,0 +1,217 @@
+/**
+* Import
+*/
+@import "./variable.scss";
+
+/**
+* A
+*/
+.is__arrow__close {
+    color: #aaaaaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+.is__arrow__close:hover {
+    cursor: pointer;
+}
+
+/**
+* B
+*/
+
+/**
+* C
+*/
+.is__content__element {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.8rem;
+    letter-spacing: 0.02rem;
+    color: $contentColor;
+}
+.is__content__tag__element {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .02rem;
+    color: $tagColor;
+}
+
+/**
+* D
+*/
+.is__date {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $contentColor;
+    line-height: 1;
+}
+.is__date__year {
+    font-size: 3rem;
+    font-weight: bold;
+    color: $contentColor;
+    letter-spacing: .3rem;
+    line-height: 1;
+    margin: 5% 0;
+}
+
+/**
+* E
+*/
+.is__element__img {
+    border-radius: 50%;
+    box-shadow: $shadowBox;
+    width: 50%;
+    height: auto;
+}
+
+/**
+* F
+*/
+
+/**
+* G
+*/
+
+/**
+* H
+*/
+
+/**
+* I
+*/
+
+/**
+* J
+*/
+
+/**
+* K
+*/
+
+/**
+* L
+*/
+
+/**
+* M
+*/
+.is__main__title {
+    color: $contentColor;
+    font-family: "helvetica Neue";
+    line-height: 0.7em;
+    font-size: 3rem;
+    font-weight: 300; 
+}
+
+/**
+* N
+*/
+.is__none {
+    display: none;
+}
+
+/**
+* O
+*/
+.is__overflow__hidden {
+    overflow: hidden;
+}
+
+/**
+* P
+*/
+
+/**
+* Q
+*/
+
+/**
+* R
+*/
+
+/**
+* S
+*/
+.is__search {
+    border: none;
+    font-size: 1.6rem;
+    outline: none;
+    width: 100%;
+}
+.is__search:hover {
+    border-bottom: 1px solid #333; 
+}
+.is__search:focus {
+    border-bottom: 1px solid #333;
+    cursor: text;
+}
+.is__select {
+    color: $contentColor;
+    background: none;
+    border: none;
+    border-radius: 0; 
+    font-size: 1.6rem;
+}
+.is__select:hover {
+    cursor: pointer; 
+}
+.is__sort__date {
+    font-size: 1.6rem;
+    display: inline-block;
+    font-weight: lighter;
+    margin: 0 5%;
+}
+.is__sort__date > span {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.is__sticky {
+    position: fixed;    
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    min-height: 5rem;
+
+}
+.sticky + #app {
+    padding-top: 65px; 
+}
+.is__svg {
+    width: 10%;
+    height: auto;
+}
+
+/**
+* T
+*/
+.is__title__element {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: .1rem;
+    color: $contentColor;
+}
+
+/**
+* U
+*/
+
+/**
+* V
+*/
+
+/**
+* W
+*/
+
+/**
+* X
+*/
+
+/**
+* Y
+*/
+
+/**
+* Z
+*/
