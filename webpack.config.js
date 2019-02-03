@@ -10,13 +10,13 @@ const html = require("html-webpack-plugin");
  */
 module.exports = {
     mode: "development",
-    entry: path.resolve(__dirname, "src", "main.js"),
+    entry: ["@babel/polyfill", path.resolve(__dirname, "src", "main.js")],
     output: {
-        path: path.resolve(__dirname, "docs"),
-        filename: "main.js"
+        path: path.resolve(__dirname, "dist"),
+        filename: "bundle.js"
     },
     devServer: {
-        contentBase: path.resolve(__dirname, "docs"),
+        contentBase: path.resolve(__dirname, "dist"),
         compress: true,
         port: 8080,
         open: true,
@@ -50,6 +50,8 @@ module.exports = {
         }),
         new html({
             template: "./src/index.html",
+            cache: true,
+            minify: true
         })
     ],
 };
