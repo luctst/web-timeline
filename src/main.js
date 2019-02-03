@@ -156,7 +156,7 @@ const returnDate = () => {
 /**
  * Éxecution
  */
-window.addEventListener("DOMContentLoaded", () => {renderContent()});
-window.addEventListener("scroll", () => navFixed());
+window.addEventListener("DOMContentLoaded", renderContent);
+window.addEventListener("scroll", navFixed);
 select.addEventListener("change", filter);
 dateField.addEventListener("click", returnDate);
