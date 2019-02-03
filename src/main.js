@@ -2,6 +2,7 @@
  * Import
  */
 import Element from "./model/Element";
+import autoComplete from "@tarekraafat/autocomplete.js";
 import "./assets/scss/main.scss";
 import "./assets/img/Network.svg";
 import "./assets/img/Launch.svg";
@@ -24,6 +25,7 @@ const sectionRight = document.querySelector(".main--right");
 const select = document.querySelector("select");
 const optionValues = document.querySelectorAll("option");
 const svgChronologique = document.querySelector(".chronologique");
+const elementDivContent = document.querySelectorAll(".main--left--element--text");
 const sticky = navbar.offsetTop;
 let elementTab = [];
 let dateChronologique = true;
@@ -55,7 +57,7 @@ const createElement = obj => {
     const div = document.createElement("div");
     div.classList.add("main--left--element");
     div.innerHTML += `
-        <div class="main--left--element--date" data-toggle="modal" data-target="#modal">
+        <div class="main--left--element--date">
             <h3 class="is__date">${obj.day} / ${obj.month}</h3>
             <h4 class="is__date__year">${obj.year}</h4>
         </div>
@@ -152,6 +154,21 @@ const returnDate = () => {
         }
     }
 }
+const getFullcontent = e => {
+    if (e.path[0].className === "main--left--element--text") {
+        elementTab.forEach(element => {
+            if (e.path[0].firstElementChild.textContent === element.title) {
+                createContentSection(element);
+            }
+        });
+    } else if (e.path[1].className === "main--left--element--text") {
+        elementTab.forEach(element => {
+            if (e.path[1].firstElementChild.textContent === element.title) {
+                createContentSection(element);
+            }
+        });
+    }
+}
 
 /**
  * Éxecution
@@ -160,3 +177,10 @@ window.addEventListener("DOMContentLoaded", renderContent);
 window.addEventListener("scroll", navFixed);
 select.addEventListener("change", filter);
 dateField.addEventListener("click", returnDate);
+document.addEventListener("click", event => { getFullcontent(event) });
+new autoComplete({
+    data: { src: elementTab },
+    placeHolder: "Write the date you're looking for",
+    selector: ".is__search",
+    threshold: 0,
+});
