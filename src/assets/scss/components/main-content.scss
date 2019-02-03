@@ -25,15 +25,6 @@
                 grid-column: 2/3;
                 text-align: center;
                 position: relative; 
-            } 
-            &--img::before {
-                content: "";
-                height: 100%;
-                border: 1.5px dotted #cccccc;
-                display: inline-block;
-                position: absolute;
-                top: 0%;
-                left: 50%;
             }
             &--text {
                 grid-column: 3/9;
@@ -47,11 +38,9 @@
                 }
                 &:hover{
                     box-shadow: $shadowBox;
+                    cursor: pointer;
                 }
             }
         }
-    }
-    &--left--element:hover {
-        cursor: pointer;
     }
 }
