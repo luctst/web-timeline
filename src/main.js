@@ -1,8 +1,7 @@
 /**
  * Import
  */
-import Element from "./model/Element";
-import autoComplete from "@tarekraafat/autocomplete.js";
+import Element from "./model/element";
 import "./assets/scss/main.scss";
 import "./assets/img/Network.svg";
 import "./assets/img/Launch.svg";
@@ -11,6 +10,7 @@ import "./assets/img/arrow.svg";
 import "./assets/img/Programming.svg";
 import "./assets/img/Science.svg";
 import "./assets/img/Security.svg";
+import "./assets/img/Social-media.svg";
 
 /**
 * Variables
@@ -25,7 +25,6 @@ const sectionRight = document.querySelector(".main--right");
 const select = document.querySelector("select");
 const optionValues = document.querySelectorAll("option");
 const svgChronologique = document.querySelector(".chronologique");
-const elementDivContent = document.querySelectorAll(".main--left--element--text");
 const sticky = navbar.offsetTop;
 let elementTab = [];
 let dateChronologique = true;
@@ -46,11 +45,11 @@ const navFixed = () => { // TODO: Fixed navbar
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("is__sticky");
         header.classList.add("sticky");
-        navbar.classList.add("container");
+        navbar.style.width = `${document.querySelector("main").clientWidth}px`;
     } else {
         navbar.classList.remove("is__sticky");
         header.classList.remove("sticky");
-        navbar.classList.remove("container");
+        navbar.style.width = "";
     }
 }
 const createElement = obj => {
@@ -67,7 +66,7 @@ const createElement = obj => {
         <div class="main--left--element--text">
             <h2 class="is__title__element">${obj.title}</h2>
             <p class="is__content__element">${obj.description}</p>
-            <p class="is__content__tag__element">#${obj.category}.</p>
+            <p class="is__content__tag__element">#${obj.category}</p>
         </div>`;
     sectionLeft.appendChild(div);
     return div;
@@ -83,6 +82,8 @@ const createContentSection = obj => {
                 <div class="separateur"></div>
                 <p>${obj.content}</p>
                 <h2 class="is__">Links</h2>
+                <p><a href="${obj.link}">${obj.link}</a></p>
+                <p><a href="${obj.otherLink}">${obj.otherLink}</a></p>
             </div>
             <div class="main--right--element--wrapper--related">
                 <span class="is__arrow__close">&times;</span>
@@ -104,7 +105,7 @@ const createContentSection = obj => {
 const renderContent = async () => { // TODO: Render element
     const data = await getData(spreadsheet);
     for (let i = 0; i < data.length; i++) {
-        new Element(data[i], optionValues, select, createElement, elementTab, createContentSection);
+        new Element(data[i], optionValues, select, createElement, elementTab);
     }
 }
 const filter = async () => { //TODO: Filter date with categories
@@ -180,9 +181,3 @@ window.addEventListener("scroll", navFixed);
 select.addEventListener("change", filter);
 dateField.addEventListener("click", returnDate);
 document.addEventListener("click", event => { getFullcontent(event) });
-new autoComplete({
-    data: { src: elementTab },
-    placeHolder: "Write the date you're looking for",
-    selector: ".is__search",
-    threshold: 0,
-});
