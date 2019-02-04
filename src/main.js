@@ -79,16 +79,18 @@ const createContentSection = obj => {
     <div class="main--right--element">
         <div class="main--right--element--wrapper">
             <div class="main--right--element--wrapper--description">
-                <span class="is__arrow__close">&times;</span>
                 <h2 class="is__">Overview</h2>
+                <div class="separateur"></div>
                 <p>${obj.content}</p>
                 <h2 class="is__">Links</h2>
             </div>
             <div class="main--right--element--wrapper--related">
+                <span class="is__arrow__close">&times;</span>
                 <h2 class="is__">Related</h2>
-                <h3></h3>
+                <div class="separateur"></div>
+                <h3>Category</h3>
                 <p>${obj.category}</p>
-                <h3></h3>
+                <h3>Related date</h3>
             </div>
         </div>
     </div>`;
