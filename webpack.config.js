@@ -50,8 +50,7 @@ module.exports = {
         }),
         new html({
             template: "./src/index.html",
-            cache: true,
-            minify: true
+            minify: true,
         })
     ],
 };
