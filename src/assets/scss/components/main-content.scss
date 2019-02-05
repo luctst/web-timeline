@@ -24,7 +24,17 @@
             &--img {
                 grid-column: 2/3;
                 text-align: center;
+                background-color: white;
                 position: relative; 
+                &::before{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    height: calc(100% + 2rem);
+                    border-left: 1px dashed #333;
+                    top: 0%;
+                    left: 50%;
+                }
             }
             &--text {
                 grid-column: 3/9;
