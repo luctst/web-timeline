@@ -1,27 +1,38 @@
 /**
-     * Variables
-     */
-const navbar = document.getElementById("js-stickyMenu");
-const dateField = document.querySelector(".is__subTitle");
-const select = document.querySelector("select");
-const app = document.getElementById("app");
-const sticky = navbar.offsetTop;
+ * Import
+ */
+import Element from "./model/element";
+import "./assets/scss/main.scss";
+import "./assets/img/Network.svg";
+import "./assets/img/Launch.svg";
+import "./assets/img/Ai.svg";
+import "./assets/img/arrow.svg";
+import "./assets/img/Programming.svg";
+import "./assets/img/Science.svg";
+import "./assets/img/Security.svg";
+import "./assets/img/Social-media.svg";
+import "./assets/img/Design.svg";
+
+/**
+* Variables
+*/
 const spreadsheetsId = `1xG2xF92GiSf5yVHU5JFoEHrAvR2ksaMNm7kMHAI4Iyg`;
 const spreadsheet = `https://spreadsheets.google.com/feeds/list/${spreadsheetsId}/1/public/values?alt=json`;
+const navbar = document.querySelector(".header--infobar");
+const header = document.querySelector("header");
+const dateField = document.querySelector(".header--infobar--date");
+const sectionLeft = document.querySelector(".main--left");
+const sectionRight = document.querySelector(".main--right");
+const select = document.querySelector("select");
+const optionValues = document.querySelectorAll("option");
+const svgChronologique = document.querySelector(".chronologique");
+const sticky = navbar.offsetTop;
 let elementTab = [];
-let idInit = 0;
 let dateChronologique = true;
 
 /**
  * Déclaration
  */
-const navFixed = () => { // TODO: Fixed navbar
-    if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
-    } else {
-        navbar.classList.remove("sticky");
-    }
-}
 const getData = async bdd => { // TODO: Get data from BDD
     try {
         let data = await fetch(bdd);
@@ -31,97 +42,133 @@ const getData = async bdd => { // TODO: Get data from BDD
         throw error;
     }
 }
-const renderContent = async (init, index) => { // TODO: Render element with unknown index
-    const data = await getData(spreadsheet);
-    for (let i = init; i < index; i++) {
-        let el = new Element();
-        el.createElement(data[i]);
-        el.getDescription();
-        elementTab.push(el);
-    }
-    console.log(elementTab);
-}
-const filter = async () => { // TODO: Filter event by tag.
-    app.innerHTML = "";
-    const categoryValue = select.value;
-    const tabLength = elementTab.length;
-    if (categoryValue === "") {
-        idInit = 0;
-        elementTab = [];
-        renderContent(0, tabLength);
+const navFixed = () => { // TODO: Fixed navbar
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("is__sticky");
+        header.classList.add("sticky");
+        navbar.style.width = `${document.querySelector("main").clientWidth}px`;
     } else {
-        const data = await getData(spreadsheet);
-        data.forEach(el => {
-            if (el.gsx$category.$t === categoryValue) {
-                let element = new Element();
-                element.createElement(el);
-                element.getDescription();
+        navbar.classList.remove("is__sticky");
+        header.classList.remove("sticky");
+        navbar.style.width = "";
+    }
+}
+const createElement = obj => {
+    const div = document.createElement("div");
+    div.classList.add("main--left--element");
+    div.innerHTML += `
+        <div class="main--left--element--date">
+            <h3 class="is__date">${obj.day} / ${obj.month}</h3>
+            <h4 class="is__date__year">${obj.year}</h4>
+        </div>
+        <div class="main--left--element--img">
+            <img src="./img/${obj.img}" alt="Icon" class="is__element__img"/>
+        </div>
+        <div class="main--left--element--text">
+            <h2 class="is__title__element">${obj.title}</h2>
+            <p class="is__content__element">${obj.description}</p>
+            <p class="is__content__tag__element">#${obj.category}</p>
+        </div>`;
+    sectionLeft.appendChild(div);
+    return div;
+}
+const createContentSection = obj => {
+    document.body.classList.add("is__overflow__hidden"); 
+    sectionRight.classList.remove("is__none");
+    sectionRight.innerHTML = `
+    <div class="main--right--element">
+        <div class="main--right--element--wrapper">
+            <div class="main--right--element--wrapper--description">
+                <h2 class="is__">Overview</h2>
+                <div class="separateur"></div>
+                <p>${obj.content}</p>
+                <h2 class="is__">Links</h2>
+                <p><a href="${obj.link}">${obj.link}</a></p>
+                <p><a href="${obj.otherLink}">${obj.otherLink}</a></p>
+            </div>
+            <div class="main--right--element--wrapper--related">
+                <span class="is__arrow__close">&times;</span>
+                <h2 class="is__">Related</h2>
+                <div class="separateur"></div>
+                <h3>Category</h3>
+                <p>${obj.category}</p>
+                <h3>Related date</h3>
+            </div>
+        </div>
+    </div>`;
+    const arrowClose = document.querySelector(".is__arrow__close");
+    arrowClose.addEventListener("click", () => {
+        sectionRight.innerHTML = "";
+        sectionRight.classList.add("is__none");
+        document.body.classList.remove("is__overflow__hidden"); 
+    });
+};
+const renderContent = async () => { // TODO: Render element
+    const data = await getData(spreadsheet);
+    for (let i = 0; i < data.length; i++) {
+        new Element(data[i], optionValues, select, createElement, elementTab);
+    }
+}
+const filter = async () => { //TODO: Filter date with categories
+    sectionLeft.innerHTML = "";
+    if (select.value === "") {
+        elementTab.forEach(element => {
+            createElement(element);
+        });
+    } else {
+        dateChronologique = true;
+        elementTab.forEach(element => {
+            if (element.category === select.value) {
+                createElement(element);
             }
         });
     }
-}
-const addContent = async () => { // TODO: Add content when scroll bottom of the page.
-    const lastItem = elementTab[elementTab.length - 1].id + 1;
-    const position = lastItem + 8;
-    renderContent(lastItem, position);
-}
-const returnDate = async () => {
-    app.innerHTML = "";
-    const data = await getData(spreadsheet);
-    if (dateChronologique) {
-        for (let i = elementTab.length - 1; i >= 0; i--) {
-            let el = new Element();
-            el.createElement(data[i]);
-            el.getDescription();
+};
+const returnDate = () => {
+    sectionLeft.innerHTML = "";
+    if (select.value === "") {
+        if (dateChronologique) {
+            svgChronologique.style.transform = 'rotate(180deg)';
+            for (let i = elementTab.length - 1; i >= 0; i--) {
+                createElement(elementTab[i]);
+            }
+            dateChronologique = false;
+        } else {
+            svgChronologique.style.transform = '';   
+            for (const i of elementTab) {
+                createElement(i);
+            }
+            dateChronologique = true;
         }
-        dateChronologique = false;
     } else {
-        for (let i = 0; i < elementTab.length; i++) {
-            let el = new Element();
-            el.createElement(data[i]);
-            el.getDescription();
+        if (dateChronologique) {
+            for (let i = elementTab.length - 1; i >= 0; i--) {
+                if (select.value === elementTab[i].category) {
+                    createElement(elementTab[i]);
+                }
+            }
+            dateChronologique = false;
+        } else {
+            for (const i of elementTab) {
+                if (select.value === i.category) {
+                    createElement(i);
+                }
+            }
+            dateChronologique = true;
         }
-        dateChronologique = true;
     }
 }
-class Element { // TODO: Class for new Element
-    constructor() {
-        this.id = idInit++;
-    }
-    createElement(el) {
-        const div = document.createElement("div");
-        div.classList.add("content");
-        div.innerHTML += `
-            <div class="content--date">
-                <p class="is__text__content">${el.gsx$date.$t}</p>
-            </div>
-            <div class="content--cat">
-                <p class="is__text__content">${el.gsx$category.$t}</p>
-            </div>
-            <div class="content--title">
-                <p class="is__title__content">${el.gsx$title.$t}</p>
-            </div>
-            <div class="content--more">
-                <img class="is__img__arrow" src="./img/arrow.svg" alt="Cliquez pour voir la description"/>
-            </div>
-            <div class="content--description is__none">
-                <p class="is__title__content">${el.gsx$description.$t}</p>
-                <p class="is__btn"><a href="#">See more</a></p>
-            </div>`;
-        app.appendChild(div);
-        this.html = div;
-        this.category = el.gsx$category.$t;
-    };
-    getDescription() {
-        const elementParent = this.html;
-        const lastChild = elementParent.lastChild;
-        elementParent.addEventListener("click", () => {
-            if (lastChild.className === "content--description is__none") {
-                lastChild.classList.remove("is__none");
-                elementParent.querySelector(".is__img__arrow").style.transform = "rotate(180deg)";
-            } else {
-                lastChild.classList.add("is__none");
-                elementParent.querySelector(".is__img__arrow").style.transform = "";
+const getFullcontent = e => {
+    if (e.path[0].className === "main--left--element--text") {
+        elementTab.forEach(element => {
+            if (e.path[0].firstElementChild.textContent === element.title) {
+                createContentSection(element);
+            }
+        });
+    } else if (e.path[1].className === "main--left--element--text") {
+        elementTab.forEach(element => {
+            if (e.path[1].firstElementChild.textContent === element.title) {
+                createContentSection(element);
             }
         });
     }
@@ -130,14 +177,8 @@ class Element { // TODO: Class for new Element
 /**
  * Éxecution
  */
-window.addEventListener("DOMContentLoaded", () => renderContent(0, 6));
-window.addEventListener("scroll", () => {
-    navFixed();
-    if (select.value === "" && dateChronologique) {
-        if (this.innerHeight + this.pageYOffset === document.body.clientHeight) {
-            addContent();
-        }
-    };
-});
+window.addEventListener("DOMContentLoaded", renderContent);
+window.addEventListener("scroll", navFixed);
 select.addEventListener("change", filter);
 dateField.addEventListener("click", returnDate);
+document.addEventListener("click", event => { getFullcontent(event) });
