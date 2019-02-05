@@ -2,7 +2,7 @@
  * TODO: Create a new element an element is simply a all tha data that we fetch from the * database and display in the section--left element.
  */
 export default class Element { // TODO: Class for new Element
-    constructor(data, option, select, fn, tab, fnContent) {
+    constructor(data, option, select, fn, tab) {
         this.setElementProps(data);
         this.setImg(this.category, option);
         this.pushInGoodTab(select, fn, tab);
@@ -12,6 +12,8 @@ export default class Element { // TODO: Class for new Element
         this.day = dateTab[0];
         this.month = dateTab[1];
         this.year = dateTab[2];
+        this.link = data.gsx$linkone.$t;
+        this.otherLink = data.gsx$linktwo.$t;
         this.category = data.gsx$category.$t;
         this.content = data.gsx$content.$t;
         this.description = data.gsx$description.$t;
