@@ -11,6 +11,7 @@ import "./assets/img/Programming.svg";
 import "./assets/img/Science.svg";
 import "./assets/img/Security.svg";
 import "./assets/img/Social-media.svg";
+import "./assets/img/Design.svg";
 
 /**
 * Variables
