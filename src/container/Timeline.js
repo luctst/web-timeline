@@ -20,26 +20,35 @@ function Timeline() {
   }, []);
 
   return(
-    <div className="main--left--element">
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-    </div>
+    <React.Fragment>
+      <div className="main--left--element">
+        <Event />
+      </div>
+      <div className="main--left--element">
+        <Event />
+      </div>
+      <div className="main--left--element">
+        <Event />
+      </div>
+      <div className="main--left--element">
+        <Event />
+      </div>
+      <div className="main--left--element">
+        <Event />
+      </div>
+      <div className="main--left--element">
+        <Event />
+      </div>
+      <div className="main--left--element">
+        <Event />
+      </div>
+      <div className="main--left--element">
+        <Event />
+      </div>
+      <div className="main--left--element">
+        <Event />
+      </div>
+    </React.Fragment>
   )
 }
 
