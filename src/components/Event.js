@@ -25,19 +25,6 @@ function Event() {
           <p className="is__content__element">description</p>
           <p className="is__content__tag__element">#category</p>
         </div>
-        {/* <div className="card">
-          <div className="card-body">
-            <div className="card-title">
-              <h1>Title</h1>
-            </div>
-              <div className="card-description">
-                  <p>description</p>
-              </div>
-            <div className="card--category">
-                <p>Category</p>
-                </div>
-            </div>
-          </div> */}
       </React.Fragment>
     )
   }
