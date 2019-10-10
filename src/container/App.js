@@ -8,11 +8,11 @@ import Filters from './Filters';
 function App() {
   return (
     <div className="App">
-      <header className="header">
-        <Header />
-      </header>
       <div className="container">
-        <Filters />
+        <header className="header mb-5">
+          <Header />
+          <Filters />
+        </header>
         <main id="app" className="main">
           <section className="main--left">
             <Timeline />
