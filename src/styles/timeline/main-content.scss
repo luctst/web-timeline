@@ -23,6 +23,10 @@
               background-color: white;
               position: relative;
               z-index: 9;
+              .is__element__img{
+                border: solid 1px;
+                border-radius: 30px;
+              }
               &::before{
                   content: "";
                   display: block;
