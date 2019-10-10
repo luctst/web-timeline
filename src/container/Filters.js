@@ -12,7 +12,7 @@ const Filters = () => {
           <img src={Arrow} width="20px" alt="icon"></img>
         </div>
         <div className="header--infobar--categories">
-          <select className="is__select__is__subTitle">
+          <select className="is__select is__subTitle">
             <option value="Network">Catégories</option>
             <option value="Network">Network</option>
             <option value="Launch">Launch</option>
