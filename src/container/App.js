@@ -1,24 +1,28 @@
 import React from 'react';
 import logo from '../assets/img/logo.svg';
-// import './App.css';
+import '../styles/app.scss';
+import Header from "../components/Header";
+import Timeline from './Timeline';
+import Filters from './Filters';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="header">
+        <Header />
       </header>
+      <div className="container">
+        <Filters />
+        <main id="app" className="main">
+          <section className="main--left">
+            <Timeline />
+          </section>
+          <section className="main--right is__none">
+            <div className="timeline--event mt-5">
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
   );
 }
