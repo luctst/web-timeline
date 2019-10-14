@@ -3,9 +3,8 @@ import Event from "../components/Event";
 import Filters from './Filters';
 
 function Timeline() {
-  const [state, setState] = useState({
-      data: null
-  })
+  const [state, setState] = useState({data: null})
+  const [orderByDesc, setOder] = useState(false); // Use this for ordering your `state.data`
 
   useEffect(() => {
     fetch(`https://spreadsheets.google.com/feeds/list/${process.env.REACT_APP_KEY}/1/public/values?alt=json`)
@@ -13,14 +12,16 @@ function Timeline() {
     .then(dataParsed => {
       const newState = dataParsed.feed.entry;
       console.log(newState[1]);
-      setState({data: newState});
+      setState({data: newState, oderByDesc: false});
     })
     console.log(state.data);
   }, []);
 
+  const changeOrder = () => setOder(!orderByDesc); // Everytime you click on <p>sort by date</p> state should be update
+
   return(
     <React.Fragment>
-      <Filters data={state.data} />
+      <Filters changeDataOrder={changeOrder} />
       {state.data === null ? "loading" :
        state.data.map((event, index) => {
         return (
