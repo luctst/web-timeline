@@ -2,13 +2,13 @@ import React from "react";
 import SortByDate from "../assets/img/sort-by-date.svg";
 import Arrow from "../assets/img/arrow.svg";
 
-const Filters = () => {
+const Filters = props => {
   return (
     <React.Fragment>
       <div className="header--infobar">
         <div className="header--infobar--date">
           <img src={SortByDate} alt="icon"></img>
-          <p className="is__sort__date">Sort by <span>Date</span></p>
+          <p className="is__sort__date" onClick={() => props.changeDataOrder()}>Sort by <span>Date</span></p>
           <img src={Arrow} width="20px" alt="icon"></img>
         </div>
         <div className="header--infobar--categories">
