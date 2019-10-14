@@ -8,7 +8,7 @@ const Filters = () => {
       <div className="header--infobar">
         <div className="header--infobar--date">
           <img src={SortByDate} alt="icon"></img>
-          <p class="is__sort__date">Sort by <span>Date</span></p>
+          <p className="is__sort__date">Sort by <span>Date</span></p>
           <img src={Arrow} width="20px" alt="icon"></img>
         </div>
         <div className="header--infobar--categories">
