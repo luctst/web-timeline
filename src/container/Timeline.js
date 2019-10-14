@@ -13,41 +13,28 @@ function Timeline() {
     .then(response => response.json())
     .then(dataParsed => {
       const newState = dataParsed.feed.entry;
-      console.log(newState);
-      setState(newState);
+      console.log(newState[1]);
+      setState({data: newState});
     })
     console.log(state.data);
   }, []);
 
   return(
     <React.Fragment>
-      <div className="main--left--element">
-        <Event />
-      </div>
-      <div className="main--left--element">
-        <Event />
-      </div>
-      <div className="main--left--element">
-        <Event />
-      </div>
-      <div className="main--left--element">
-        <Event />
-      </div>
-      <div className="main--left--element">
-        <Event />
-      </div>
-      <div className="main--left--element">
-        <Event />
-      </div>
-      <div className="main--left--element">
-        <Event />
-      </div>
-      <div className="main--left--element">
-        <Event />
-      </div>
-      <div className="main--left--element">
-        <Event />
-      </div>
+      { (function() {
+        if(state.data === null) {
+          return "loading"
+        } else{
+          return state.data.map((event, index) => {
+            return (
+              <div className="main--left--element">
+                <Event gsx$date={event.gsx$date} gsx$title={event.gsx$title} gsx$description={event.gsx$description} gsx$category={event.gsx$category} key={index} />
+             </div>
+            )
+          })
+        }
+        }) ()
+      }
     </React.Fragment>
   )
 }
