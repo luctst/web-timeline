@@ -32,7 +32,7 @@ function Timeline() {
               return state.data.map((event, index) => {
                 return (
                   <div className="main--left--element" key={index}>
-                    <Event gsx$date={event.gsx$date} gsx$title={event.gsx$title} gsx$description={event.gsx$description} gsx$category={event.gsx$category} key={index} />
+                    <Event data={event} key={index} />
                   </div>
                 )
               })
@@ -41,7 +41,7 @@ function Timeline() {
               return state.data.map((event, index) => {
                 return (
                   <div className="main--left--element" key={index}>
-                    <Event gsx$date={event.gsx$date} gsx$title={event.gsx$title} gsx$description={event.gsx$description} gsx$category={event.gsx$category} key={index} />
+                    <Event data={event} key={index} />
                 </div>
                 )
               })
