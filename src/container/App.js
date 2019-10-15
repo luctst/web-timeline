@@ -11,7 +11,7 @@ function App() {
       <div className="container">
         <header className="header mb-5">
           <Header />
-          <Filters />
+          {/* <Filters /> */}
         </header>
         <main id="app" className="main">
           <section className="main--left">
