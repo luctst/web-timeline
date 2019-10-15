@@ -1,15 +1,15 @@
-import React, {useState, useRef} from "react";
+import React from "react";
 import SortByDate from "../assets/img/sort-by-date.svg";
 import Arrow from "../assets/img/arrow.svg";
 
-const Filters = props => {
+const Filters = React.forwardRef((props, filterImg) => {
   return (
     <React.Fragment>
       <div className="header--infobar">
-        <div className="header--infobar--date">
+        <div className="header--infobar--date" onClick={() => props.changeDataOrder()}>
           <img src={SortByDate} alt="icon"></img>
-          <p className="is__sort__date" onClick={() => props.changeDataOrder()}>Sort by <span>Date</span></p>
-          <img src={Arrow} width="20px" alt="icon"></img>
+          <p className="is__sort__date">Sort by <span>Date</span></p>
+          <img src={Arrow} width="20px" alt="icon" ref={filterImg}></img>
         </div>
         <div className="header--infobar--categories">
           <select className="is__select is__subTitle">
@@ -26,6 +26,6 @@ const Filters = props => {
       </div>
     </React.Fragment>
   )
-}
+})
 
 export default Filters
