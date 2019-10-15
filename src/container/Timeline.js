@@ -3,6 +3,8 @@ import Event from "../components/Event";
 import Filters from './Filters';
 
 function Timeline() {
+  const filterImg = React.createRef();
+
   const [state, setState] = useState({data: null})
   const [orderByDesc, setOder] = useState(false); // Use this for ordering your `state.data`
 
@@ -17,11 +19,25 @@ function Timeline() {
     console.log(state.data);
   }, []);
 
-  const changeOrder = () => setOder(!orderByDesc); // Everytime you click on <p>sort by date</p> state should be update
+  const changeOrder = () => {
+    if (filterImg.current.style.transform === '') {
+      filterImg.current.style.transform = 'rotate(180deg)'
+        const newState = {...state}
+        state.data.sort((a, b) => a-b).reverse()
+        setState(newState)
+    } else if(filterImg.current.style.transform === 'rotate(180deg)') {
+          filterImg.current.style.transform = '';
+          const newState = {...state}
+          state.data.sort((a, b) => a + b).reverse()
+          setState(newState)
+        }
+    setOder(!orderByDesc); // Everytime you click on <p>sort by date</p> state should be update
+  }
 
   return(
     <React.Fragment>
-      <Filters changeDataOrder={changeOrder} />
+      <Filters ref={filterImg} changeDataOrder={changeOrder} />
+
       {state.data === null ? "loading" :
        state.data.map((event, index) => {
         return (
