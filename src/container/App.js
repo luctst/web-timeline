@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from '../assets/img/logo.svg';
+// import logo from '../assets/img/logo.svg';
 import '../styles/app.scss';
 import Header from "../components/Header";
 import Timeline from './Timeline';
-import Filters from './Filters';
 
 function App() {
   return (
