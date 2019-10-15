@@ -14,7 +14,7 @@ function Timeline() {
     .then(dataParsed => {
       const newState = dataParsed.feed.entry;
       console.log(newState[1]);
-      setState({data: newState, oderByDesc: false});
+      setState({data: newState, orderByDesc: true});
     })
     console.log(state.data);
   }, []);
@@ -27,7 +27,7 @@ function Timeline() {
           if (state.data === null) {
             return "loading"
           } else {
-            if (!orderByDesc) {
+            if (orderByDesc) {
               state.data.sort((a, b) => a + b).reverse();
               return state.data.map((event, index) => {
                 return (
@@ -36,7 +36,7 @@ function Timeline() {
                   </div>
                 )
               })
-            } else if(orderByDesc) {
+            } else if(!orderByDesc) {
               state.data.sort((a, b) => a - b).reverse();
               return state.data.map((event, index) => {
                 return (
