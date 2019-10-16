@@ -3,9 +3,12 @@ import Event from "../components/Event";
 import Filters from './Filters';
 
 function Timeline() {
-  // const filterImg = React.createRef();
-
-  const [state, setState] = useState({data: null})
+  const [state, setState] = useState({
+    data: null,
+    filter: {
+      category: ""
+    }
+  })
   const [orderByDesc, setOrder] = useState(false); // Use this for ordering your `state.data`
 
   useEffect(() => {
@@ -14,14 +17,25 @@ function Timeline() {
     .then(dataParsed => {
       const newState = dataParsed.feed.entry;
       console.log(newState[1]);
-      setState({data: newState, orderByDesc: true});
+      setState({data: newState, filter: {category: ""} });
     })
     console.log(state.data);
   }, []);
 
+  function handleChangeCategory(el) {
+    console.log(el.target.value);
+    const newState = {...state};
+    console.log(newState.filter.category);
+    newState.filter.category = el.target.value;
+    console.log(newState.filter.category);
+    console.log(newState);
+    setState(newState);
+  }
+
   return(
     <React.Fragment>
-      <Filters changedDataOrder={() => setOrder(!orderByDesc)} />
+      <Filters changedDataOrder={() => setOrder(!orderByDesc)} changedCategory={handleChangeCategory} />
+      {/* <Filters changedDataOrder={() => setOrder(!orderByDesc)} /> */}
       {
         function () {
           if (state.data === null) {
@@ -42,7 +56,7 @@ function Timeline() {
                 return (
                   <div className="main--left--element" key={index}>
                     <Event data={event} key={index} />
-                </div>
+                  </div>
                 )
               })
             }
