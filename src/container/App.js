@@ -3,6 +3,7 @@ import React from 'react';
 import '../styles/app.scss';
 import Header from "../components/Header";
 import Timeline from './Timeline';
+import EventOverview from "../components/EventOverview";
 
 function App() {
   return (
@@ -12,13 +13,12 @@ function App() {
           <Header />
         </header>
         <main id="app" className="main">
-          <section className="main--left">
+          {/* <section className="main--left"> */}
             <Timeline />
-          </section>
-          <section className="main--right is__none">
-            <div className="timeline--event mt-5">
-            </div>
-          </section>
+          {/* </section> */}
+          {/* <section className="main--right is__none">
+            <EventOverview />
+          </section> */}
         </main>
       </div>
     </div>

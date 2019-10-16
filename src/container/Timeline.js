@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import Event from "../components/Event";
 import Filters from './Filters';
+import EventOverview from "../components/EventOverview";
 
 function Timeline() {
+  const hiddenOverview = useRef(null);
+
   const [state, setState] = useState({
     data: null,
     filter: {
@@ -32,37 +35,65 @@ function Timeline() {
     setState(newState);
   }
 
+  const handleClickEventOverview = () => {
+    // document.body.classList.add("is__overflow__hidden");
+    hiddenOverview.current.classList.remove("is__none");
+  }
+
+  const arrowClose = () => {
+    hiddenOverview.current.classList.add("is__none");
+  }
+
   return(
     <React.Fragment>
       <Filters changedDataOrder={() => setOrder(!orderByDesc)} changedCategory={handleChangeCategory} />
       {/* <Filters changedDataOrder={() => setOrder(!orderByDesc)} /> */}
-      {
-        function () {
-          if (state.data === null) {
-            return "loading"
-          } else {
-            if (orderByDesc) {
-              state.data.sort((a, b) => a + b).reverse();
+      <section className="main--left">
+        {
+          function () {
+            if (state.data === null) {
+              return "loading"
+            } else {
+              if (orderByDesc) {
+                state.data.sort((a, b) => a + b).reverse();
+                return state.data.map((event, index) => {
+                  return (
+                    <div className="main--left--element" key={index} onClick={handleClickEventOverview}>
+                      <Event data={event} key={index} />
+                    </div>
+                  )
+                })
+              } else if(!orderByDesc) {
+                state.data.sort((a, b) => a - b).reverse();
+                return state.data.map((event, index) => {
+                  return (
+                    <div className="main--left--element" key={index} onClick={handleClickEventOverview} >
+                      <Event data={event} key={index} />
+                    </div>
+                  )
+                })
+              }
+            }
+          }()
+        }
+      </section>
+      <section className="main--right is__none" ref={hiddenOverview}>
+        <EventOverview gsx$description={state.data.gsx$description.$t} closeOverview={arrowClose} />
+
+        {/* {
+          function () {
+            if (state.data === null) {
+              return "loading"
+            } else {
               return state.data.map((event, index) => {
                 return (
-                  <div className="main--left--element" key={index}>
-                    <Event data={event} key={index} />
-                  </div>
-                )
-              })
-            } else if(!orderByDesc) {
-              state.data.sort((a, b) => a - b).reverse();
-              return state.data.map((event, index) => {
-                return (
-                  <div className="main--left--element" key={index}>
-                    <Event data={event} key={index} />
-                  </div>
+                  <EventOverview data={event} closeOverview={arrowClose} />
                 )
               })
             }
-          }
-        }()
-      }
+          }()
+        } */}
+      </section>
     </React.Fragment>
   )
 }
