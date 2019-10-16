@@ -1,17 +1,17 @@
-import React, {useRef} from "react";
+import React, { useState, useRef } from "react";
 import SortByDate from "../assets/img/sort-by-date.svg";
 import Arrow from "../assets/img/arrow.svg";
+import categoryData from "../utilis/sources.json";
 
 const Filters = props => {
   const filterImg = useRef(null);
+  const categories =  [...categoryData.category]
 
   function changedOrderArrow() {
     if (filterImg.current.style.transform === '') {
       filterImg.current.style.transform = 'rotate(180deg)'
-      // state.data.sort((a, b) => a-b).reverse()
-    } else if(filterImg.current.style.transform === 'rotate(180deg)') {
+    } else if (filterImg.current.style.transform === 'rotate(180deg)') {
       filterImg.current.style.transform = '';
-      // state.data.sort((a, b) => a + b).reverse()
     }
     props.changedDataOrder();
   }
@@ -25,15 +25,14 @@ const Filters = props => {
           <img src={Arrow} width="20px" alt="icon" ref={filterImg}></img>
         </div>
         <div className="header--infobar--categories">
-          <select className="is__select is__subTitle">
-            <option value="Network">Catégories</option>
-            <option value="Network">Network</option>
-            <option value="Launch">Launch</option>
-            <option value="Science">Science</option>
-            <option value="Security">Security</option>
-            <option value="Programming">Programming</option>
-            <option value="Social-media">Social-Media</option>
-            <option value="Design">Design</option>
+          <select className="is__select is__subTitle" onChange={e => props.changedCategory(e)}>
+            {
+              categories.map(category => {
+                return (
+                  <option value={category} key={category}>{category}</option>
+                )
+              })
+            }
           </select>
         </div>
       </div>
