@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useRef} from "react";
 import SortByDate from "../assets/img/sort-by-date.svg";
 import Arrow from "../assets/img/arrow.svg";
 import categoryData from "../utilis/sources.json";
