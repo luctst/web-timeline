@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import Event from "../components/Event";
 import Filters from './Filters';
+import EventOverview from "../components/EventOverview";
 
 function Timeline() {
   const [data, setData] = useState([])
@@ -22,6 +23,15 @@ function Timeline() {
     newState.category = el.target.value;
 
     setFilters(newState);
+  }
+
+  const handleClickEventOverview = () => {
+    // document.body.classList.add("is__overflow__hidden");
+    hiddenOverview.current.classList.remove("is__none");
+  }
+
+  const arrowClose = () => {
+    hiddenOverview.current.classList.add("is__none");
   }
 
   return(
