@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import Event from "../../components/Event";
+import Event from "../../components/Event/Event";
 import Filters from '../Filters/Filters';
 
 function Timeline() {
