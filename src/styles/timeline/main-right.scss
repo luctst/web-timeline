@@ -5,13 +5,12 @@
 */
 .main--right {
     &--element {
-        background-color: rgba(0,0,0,0.4); 
-        height: 100%;  
+        background-color: rgba(0,0,0,0.4);
+        height: 100%;
         left: 0;
         position: fixed;
         top: 0;
         z-index: 11;
-        width: 135vh;
         &--wrapper {
             display: grid;
             grid-template-columns: 1fr 25%;
@@ -46,7 +45,7 @@
                 color: #333;
                 line-height: 2.2rem;
             }
-            & .separateur{
+            & .separator{
                 width: 100%;
                 border: solid .5px rgb(90, 90, 90);
                 margin-bottom: 3rem;
@@ -55,7 +54,7 @@
 
         }
     }
-}           
+}
 .is__arrow__close {
     float: right;
     top: 0;
