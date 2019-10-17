@@ -15,24 +15,21 @@ function Event(props) {
   const Date = styled.h3`
     margin-top: 18px;
   `
-    return (
-      <React.Fragment>
-        <div className="main--left--element--date">
-          <Date className="is__date">{props.data.gsx$date.$t}</Date>
-          {/* <h3 className="is__date">{props.gsx$date.$t}</h3> */}
-        </div>
-        <div className="main--left--element--img">
-          {/* <img src="../assets/img/Network.svg" alt="Icon"></img> */}
-          <img src={`static/media/${props.data.gsx$category.$t}.svg`} alt="Icon" className="is__element__img" width="60px"></img>
-          {/* <img src={Network} alt="Icon" className="is__element__img" width="60px"></img> */}
-        </div>
-        <div className="main--left--element--text">
-          <h2 className="is__title__element">{props.data.gsx$title.$t}</h2>
-          <p className="is__content__element">{props.data.gsx$description.$t}</p>
-          <p className="is__content__tag__element">#{props.data.gsx$category.$t}</p>
-        </div>
-      </React.Fragment>
-    )
-  }
+  return (
+    <div className="main--left--element">
+      <div className="main--left--element--date">
+        <Date className="is__date">{props.data.gsx$date.$t}</Date>
+      </div>
+      <div className="main--left--element--img">
+        <img src={props.data.gsx$category.$t} alt="Icon" className="is__element__img" width="60px"></img>
+      </div>
+      <div className="main--left--element--text">
+        <h2 className="is__title__element">{props.data.gsx$title.$t}</h2>
+        <p className="is__content__element">{props.data.gsx$description.$t}</p>
+        <p className="is__content__tag__element">#{props.data.gsx$category.$t}</p>
+      </div>
+    </div>
+  )
+}
 
-    export default Event
+export default Event

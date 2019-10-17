@@ -1,18 +1,16 @@
 import React, {useRef} from "react";
 import SortByDate from "../assets/img/sort-by-date.svg";
 import Arrow from "../assets/img/arrow.svg";
-import categoryData from "../utilis/sources.json";
+import categoryData from "../utils/sources.json";
 
 const Filters = props => {
   const filterImg = useRef(null);
   const categories =  [...categoryData.category]
 
   function changedOrderArrow() {
-    if (filterImg.current.style.transform === '') {
-      filterImg.current.style.transform = 'rotate(180deg)'
-    } else if (filterImg.current.style.transform === 'rotate(180deg)') {
-      filterImg.current.style.transform = '';
-    }
+    if (filterImg.current.style.transform === '') filterImg.current.style.transform = 'rotate(180deg)'; 
+    else if (filterImg.current.style.transform === 'rotate(180deg)') filterImg.current.style.transform = '';
+    
     props.changedDataOrder();
   }
 
