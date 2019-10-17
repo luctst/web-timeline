@@ -22,7 +22,6 @@ function Event(props) {
           {/* <h3 className="is__date">{props.gsx$date.$t}</h3> */}
         </div>
         <div className="main--left--element--img">
-          {/* <img src="../assets/img/Network.svg" alt="Icon"></img> */}
           <img src={`static/media/${props.data.gsx$category.$t}.svg`} alt="Icon" className="is__element__img" width="60px"></img>
           {/* <img src={Network} alt="Icon" className="is__element__img" width="60px"></img> */}
         </div>
