@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import styled from 'styled-components'
-import "../styles/main.scss";
+import "../../styles/main.scss";
 import EventOverview from "./EventOverview";
+import Date from "./Date.style"
 // import Network from "../assets/img/Network.svg";
 // import Launch from "../assets/img/Launch.svg";
 // import Ai from "../assets/img/Ai.svg";
@@ -14,9 +14,6 @@ import EventOverview from "./EventOverview";
 
 function Event(props) {
   const hiddenOverview = useRef(null);
-  const Date = styled.h3`
-    margin-top: 18px;
-  `
 
   const toggleClass = () => {
     document.body.classList.toggle("is__overflow__hidden");
