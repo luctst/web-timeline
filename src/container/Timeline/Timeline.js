@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Event from "../../components/Event/Event";
 import Filters from '../Filters/Filters';
+import Loader from "../../components/Loader/Loader";
 
 function Timeline() {
   const [data, setData] = useState([])
@@ -30,7 +31,7 @@ function Timeline() {
       <section className="main--left">
         {
           (function () {
-            if (data.length === 0) return "Loading..";
+            if (data.length === 0) return <Loader />;
             if (orderByDesc) {
               return data.sort((a,b) => a-b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />)
             }
