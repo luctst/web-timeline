@@ -24,9 +24,11 @@
         background-color: #fff;
         padding-left: 2%;
         &--search {
-            display: flex;
-            align-items: center;
-            width: 100%;
+            // display: flex;
+            // align-items: center;
+            // flex-direction: row-reverse;
+            // width: 100%;
+            margin-left: 29%;
             svg {
                 margin-right: 1%;
                 width: 3.5%;
