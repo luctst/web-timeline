@@ -15,6 +15,10 @@ const Filters = props => {
     props.changedDataOrder();
   }
 
+  // function handleOnChange(event) {
+  //   console.log(event.target.value);
+  // }
+
   return (
     <React.Fragment>
       <div className="header--infobar">
@@ -35,7 +39,8 @@ const Filters = props => {
           </select>
         </div>
         <div className="header--infobar--search">
-          <SearchBar />
+          {/* <SearchBar handleChangedSearchInput={e => handleOnChange(e)} /> */}
+          <SearchBar handleChangedSearchInput={props.handleChangedSearchInput} />
         </div>
       </div>
     </React.Fragment>
