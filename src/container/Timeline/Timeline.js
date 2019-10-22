@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import Event from "../../components/Event/Event";
 import Filters from '../Filters/Filters';
 import Loader from "../../components/Loader/Loader";
-import { fdatasync } from "fs";
 
 function Timeline() {
   const [data, setData] = useState([])
