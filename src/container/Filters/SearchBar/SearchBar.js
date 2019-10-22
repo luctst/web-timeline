@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBarStyled from "./style/SearchBarStyled.style";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   return(
   <SearchBarStyled className="input-group mb-3 search--bar">
     <div className="input-group-prepend">
@@ -12,7 +12,7 @@ const SearchBar = () => {
         <li className="dropdown--item--li"> <a href="#/" className="dropdown--item--a">Description</a></li>
       </ul>
       </div>
-      <input type="text" className="form-control" aria-label="Text input with dropdown button" placeholder="Search"/>
+      <input type="text" className="form-control" aria-label="Text input with dropdown button" placeholder="Search" onChange={props.handleChangedSearchInput} />
     </div>
   </SearchBarStyled>
   )
