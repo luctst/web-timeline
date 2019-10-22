@@ -27,7 +27,7 @@ const SearchBarStyled = styled.div`
       border: none;
       font-size: 1.6rem;
       outline: none;
-      width: 100%;
+      width: 120%;
       margin-left: 15px;
 
       :hover {
