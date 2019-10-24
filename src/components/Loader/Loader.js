@@ -25,7 +25,7 @@ const Loader = () => {
 
   return (
     <LoaderStyle className="loader">
-      <svg viewBox="0 0 150 33.2" width="180" height="150">
+      <svg viewBox="0 0 150 33.2" width="80" height="80">
         <circle ref={blue} cx="16.1" cy="16.6" r="16.1" fill="#B0E7FF" />
         <circle ref={red} cx="55.2" cy="16.6" r="16.1" fill="#C9EFFF" />
         <circle ref={yellow} cx="94.3" cy="16.6" r="16.1" fill="#B0E7FF" />
