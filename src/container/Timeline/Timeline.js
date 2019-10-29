@@ -3,7 +3,6 @@ import Event from "../../components/Event/Event";
 import Filters from '../Filters/Filters';
 import Loader from "../../components/Loader/Loader";
 import ButtonTopStyled from "../styled/ButtonTopStyled.style";
-// import ButtonTop from "../../components/Button/ButtonTop";
 
 function Timeline() {
   const [data, setData] = useState([])

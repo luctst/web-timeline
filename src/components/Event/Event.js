@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "../../styles/main.scss";
-import EventOverview from "./EventOverview";
+import EventOverview from "../EventOverview/EventOverview";
 import Date from "./Date.style"
 // import Network from "../assets/img/Network.svg";
 // import Launch from "../assets/img/Launch.svg";

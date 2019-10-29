@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import variableColor from "../../../../styles/helpers/variables.js";
+import variableColor from "../../styles/helpers/variables.js";
 
 const SearchBarStyled = styled.div`
   div {
