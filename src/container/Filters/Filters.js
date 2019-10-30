@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import SortByDate from "../../assets/img/sort-by-date.svg";
 import Arrow from "../../assets/img/arrow.svg";
 import categoryData from "../../utils/sources.json";
-import SearchBar from "./SearchBar/SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Filters = props => {
   const filterImg = useRef(null);
