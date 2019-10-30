@@ -70,7 +70,7 @@ function Timeline() {
               }
               if (!orderByDesc) {
                 if (filters.showEvents.showList) {
-                  return data.sort((a, b) => a - b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />)
+                  return data.sort((a, b) => a + b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />)
                 } else if (!filters.showEvents.showList) {
                   return data.sort((a, b) => a - b).reverse().map((event, index) => {
                     return event.gsx$title.$t.includes(filters.showEvents.searchInput) ?
