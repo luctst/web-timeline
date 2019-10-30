@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import SortByDate from "../../assets/img/sort-by-date.svg";
 import Arrow from "../../assets/img/arrow.svg";
 import categoryData from "../../utils/sources.json";
@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar/SearchBar";
 
 const Filters = props => {
   const filterImg = useRef(null);
-  const categories =  [...categoryData.category]
+  const categories = [...categoryData.category]
 
   function changedOrderArrow() {
     if (filterImg.current.style.transform === '') filterImg.current.style.transform = 'rotate(180deg)';
@@ -14,10 +14,6 @@ const Filters = props => {
 
     props.changedDataOrder();
   }
-
-  // function handleOnChange(event) {
-  //   console.log(event.target.value);
-  // }
 
   return (
     <React.Fragment>
@@ -39,7 +35,6 @@ const Filters = props => {
           </select>
         </div>
         <div className="header--infobar--search">
-          {/* <SearchBar handleChangedSearchInput={e => handleOnChange(e)} /> */}
           <SearchBar handleChangedSearchInput={props.handleChangedSearchInput} />
         </div>
       </div>
