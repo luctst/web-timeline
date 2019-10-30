@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Event from "../../components/Event/Event";
 import Filters from '../Filters/Filters';
 import Loader from "../../components/Loader/Loader";
 import ButtonTopStyled from "../styled/ButtonTopStyled.style";
-// import ButtonTop from "../../components/Button/ButtonTop";
 
 function Timeline() {
   const [data, setData] = useState([])
@@ -18,54 +17,29 @@ function Timeline() {
 
   useEffect(() => {
     fetch(`https://spreadsheets.google.com/feeds/list/${process.env.REACT_APP_KEY}/1/public/values?alt=json`)
-    .then(response => response.json())
-    .then(dataParsed => setData([...dataParsed.feed.entry]))
+      .then(response => response.json())
+      .then(dataParsed => setData([...dataParsed.feed.entry]))
   }, []);
 
   function handleChangeCategory(el) {
     if (el.target.value === filters.category) return null;
 
-    const newState = {...filters};
+    const newState = { ...filters };
+
     newState.category = el.target.value;
 
     setFilters(newState);
+
   }
 
   function handleOnChange(e) {
-  //   console.log(e.target.value);
-  //   console.log(filters.showEvents.searchInput);
+    const newState = {...filters};
 
-    if(e.target.value === filters.showEvents.searchInput) return null;
-
-    // let newData = {...data};
-    let newData = [];
-    console.log(newData);
-
-    const newState = {...filters}
-    newState.showEvents.searchInput = e.target.value
-
-    console.log(newState);
-    data.map(event => {
-      if (event.gsx$title.$t.includes(newState.showEvents.searchInput)) {
-        console.log(event);
-        newState.showEvents.searchInput = e.target.value
-        newData.push(event)
-        // setData([...newData, event]);
-        setData(newData);
-      }
-      // else {
-      //   setFilters({
-      //     category: "Network",
-      //     showEvents: {
-      //       showList: true,
-      //       searchInput: ""
-      //     }
-      //   })
-      //   console.log(newData);
-
-      //   return setData(newData);
-      // }
-    })
+    if (e.target.value.length !== "") {
+      newState.showEvents.showList = false;
+      newState.showEvents.searchInput = e.target.value;
+      setFilters(newState)
+    }
   }
 
   function topFunction() {
@@ -73,47 +47,41 @@ function Timeline() {
     document.documentElement.scrollTop = 0;
   }
 
-  return(
+  return (
     <React.Fragment>
-      {/* <ButtonTop ref={btnTop} /> */}
       <ButtonTopStyled onClick={topFunction}><i className="fas fa-arrow-up"></i></ButtonTopStyled>
-
-      {/* <Filters changedDataOrder={() => setOrder(!orderByDesc)} changedCategory={handleChangeCategory} /> */}
-      <Filters changedDataOrder={() => setOrder(!orderByDesc)} changedCategory={handleChangeCategory} handleChangedSearchInput={e => handleOnChange(e)}/>
+      <Filters changedDataOrder={() => setOrder(!orderByDesc)} changedCategory={handleChangeCategory} handleChangedSearchInput={e => handleOnChange(e)} />
       <section className="main--left">
         {
-          (function () {
+          function () {
             if (data.length === 0) return <Loader />;
 
-            if (orderByDesc) {
-              // if (filters.showEvents.searchInput !== "") {
-                return data.sort((a,b) => a-b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />)
-              // }
+            if (data.length !== 0) {
+              if (orderByDesc) {
+                if (filters.showEvents.showList) {
+                  return data.sort((a, b) => a + b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />)
+                } else if (!filters.showEvents.showList) {
+                  return data.sort((a, b) => a + b).reverse().map((event, index) => {
+                    return event.gsx$title.$t.includes(filters.showEvents.searchInput) ?
+                      filters.category === event.gsx$category.$t && <Event data={event} key={index} /> :
+                      null
+                  })
+                }
+              }
+              if (!orderByDesc) {
+                if (filters.showEvents.showList) {
+                  return data.sort((a, b) => a - b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />)
+                } else if (!filters.showEvents.showList) {
+                  return data.sort((a, b) => a - b).reverse().map((event, index) => {
+                    return event.gsx$title.$t.includes(filters.showEvents.searchInput) ?
+                      filters.category === event.gsx$category.$t && <Event data={event} key={index} /> :
+                      null
+                  })
+                }
+              }
+
             }
-            if (!orderByDesc) {
-              // if (filters.showEvents.searchInput === "") {
-
-                  return data.sort((a,b) => a+b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />)
-
-                // return data.map(e => {
-                //   return e.gsx$title.$t.includes(filters.showEvents.showList.searchInput) ?
-                //   data.sort((a,b) => a+b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />) :
-                //   null
-                // })
-
-              // }
-            }
-            // if (!orderByDesc) {
-            //   if (!filters.showEvents.showList) {
-            //     return data.map(e => {
-            //       return e.gsx$title.$t.includes(filters.showEvents.showList.searchInput) ?
-            //       data.sort((a,b) => a+b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />) :
-            //       null
-            //     })
-            //     // return data.sort((a,b) => a+b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />)
-            //   }
-            // }
-          })()
+          }()
         }
       </section>
     </React.Fragment>
