@@ -3,6 +3,7 @@ import SortByDate from "../../assets/img/sort-by-date.svg";
 import Arrow from "../../assets/img/arrow.svg";
 import categoryData from "../../utils/sources.json";
 import SearchBar from "../SearchBar/SearchBar";
+import FiltersStyled from "./FiltersStyled.style";
 
 const Filters = props => {
   const filterImg = useRef(null);
@@ -17,7 +18,7 @@ const Filters = props => {
 
   return (
     <React.Fragment>
-      <div className="header--infobar">
+      <FiltersStyled className="header--infobar">
         <div className="header--infobar--date" onClick={changedOrderArrow}>
           <img src={SortByDate} alt="icon"></img>
           <p className="is__sort__date">Sort by <span>Date</span></p>
@@ -37,7 +38,7 @@ const Filters = props => {
         <div className="header--infobar--search">
           <SearchBar handleChangedSearchInput={props.handleChangedSearchInput} searchFilter={props.searchFilter} />
         </div>
-      </div>
+      </FiltersStyled>
     </React.Fragment>
   )
 }
