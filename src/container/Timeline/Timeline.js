@@ -11,7 +11,8 @@ function Timeline() {
     category: "Network",
     showEvents: {
       showList: true,
-      searchInput: ""
+      searchInput: "",
+      searchFilter: "Title"
     }
   });
 
@@ -42,6 +43,13 @@ function Timeline() {
     }
   }
 
+  function handleClickFilter(el) {
+    const newState = {...filters};
+
+    newState.showEvents.searchFilter = el.target.value;
+    setFilters(newState);
+  }
+
   function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -50,7 +58,7 @@ function Timeline() {
   return (
     <React.Fragment>
       <ButtonTopStyled onClick={topFunction}><i className="fas fa-arrow-up"></i></ButtonTopStyled>
-      <Filters changedDataOrder={() => setOrder(!orderByDesc)} changedCategory={handleChangeCategory} handleChangedSearchInput={e => handleOnChange(e)} />
+      <Filters changedDataOrder={() => setOrder(!orderByDesc)} changedCategory={handleChangeCategory} handleChangedSearchInput={e => handleOnChange(e)}  searchFilter={e => handleClickFilter(e)} />
       <section className="main--left">
         {
           function () {
@@ -61,22 +69,38 @@ function Timeline() {
                 if (filters.showEvents.showList) {
                   return data.sort((a, b) => a + b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />)
                 } else if (!filters.showEvents.showList) {
-                  return data.sort((a, b) => a + b).reverse().map((event, index) => {
-                    return event.gsx$title.$t.includes(filters.showEvents.searchInput) ?
-                      filters.category === event.gsx$category.$t && <Event data={event} key={index} /> :
-                      null
-                  })
+                  if (filters.showEvents.searchFilter === "Title") {
+                    return data.sort((a, b) => a + b).reverse().map((event, index) => {
+                      return event.gsx$title.$t.includes(filters.showEvents.searchInput) ?
+                        filters.category === event.gsx$category.$t && <Event data={event} key={index} /> :
+                        null
+                    })
+                  } else if (filters.showEvents.searchFilter === "Description") {
+                    return data.sort((a, b) => a + b).reverse().map((event, index) => {
+                      return event.gsx$description.$t.includes(filters.showEvents.searchInput) ?
+                        filters.category === event.gsx$category.$t && <Event data={event} key={index} /> :
+                        null
+                    })
+                  }
                 }
               }
               if (!orderByDesc) {
                 if (filters.showEvents.showList) {
                   return data.sort((a, b) => a + b).reverse().map((event, index) => filters.category === event.gsx$category.$t && <Event data={event} key={index} />)
                 } else if (!filters.showEvents.showList) {
-                  return data.sort((a, b) => a - b).reverse().map((event, index) => {
-                    return event.gsx$title.$t.includes(filters.showEvents.searchInput) ?
-                      filters.category === event.gsx$category.$t && <Event data={event} key={index} /> :
-                      null
-                  })
+                  if (filters.showEvents.searchFilter === "Title") {
+                    return data.sort((a, b) => a - b).reverse().map((event, index) => {
+                      return event.gsx$title.$t.includes(filters.showEvents.searchInput) ?
+                        filters.category === event.gsx$category.$t && <Event data={event} key={index} /> :
+                        null
+                    })
+                  } else if (filters.showEvents.searchFilter === "Description") {
+                    return data.sort((a, b) => a - b).reverse().map((event, index) => {
+                      return event.gsx$description.$t.includes(filters.showEvents.searchInput) ?
+                        filters.category === event.gsx$category.$t && <Event data={event} key={index} /> :
+                        null
+                    })
+                  }
                 }
               }
 
