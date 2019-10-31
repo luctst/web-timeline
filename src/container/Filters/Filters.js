@@ -35,7 +35,7 @@ const Filters = props => {
           </select>
         </div>
         <div className="header--infobar--search">
-          <SearchBar handleChangedSearchInput={props.handleChangedSearchInput} />
+          <SearchBar handleChangedSearchInput={props.handleChangedSearchInput} searchFilter={props.searchFilter} />
         </div>
       </div>
     </React.Fragment>
