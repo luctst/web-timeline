@@ -1,8 +1,9 @@
 import React from "react";
+import EventStyledOverview from "./EventStyledOverview.style";
 
 function EventOverview(props) {
   return (
-    <div className="main--right--element">
+    <EventStyledOverview className="main--right--element">
       <div className="main--right--element--wrapper">
         <div className="main--right--element--wrapper--description">
           <h2 className="is__">Overview</h2>
@@ -21,7 +22,7 @@ function EventOverview(props) {
           <h3>Related date</h3>
         </div>
       </div>
-    </div>
+    </EventStyledOverview>
   )
 }
 
