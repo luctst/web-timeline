@@ -3,6 +3,7 @@ import Event from "../../components/Event/Event";
 import Filters from '../Filters/Filters';
 import Loader from "../../components/Loader/Loader";
 import ButtonTopStyled from "../styled/ButtonTopStyled.style";
+import TimelineStyled from "./TimelineStyled.style";
 
 function Timeline() {
   const [data, setData] = useState([])
@@ -59,7 +60,7 @@ function Timeline() {
     <React.Fragment>
       <ButtonTopStyled onClick={topFunction}><i className="fas fa-arrow-up"></i></ButtonTopStyled>
       <Filters changedDataOrder={() => setOrder(!orderByDesc)} changedCategory={handleChangeCategory} handleChangedSearchInput={e => handleOnChange(e)}  searchFilter={e => handleClickFilter(e)} />
-      <section className="main--left">
+      <TimelineStyled className="main--left">
         {
           function () {
             if (data.length === 0) return <Loader />;
@@ -107,7 +108,7 @@ function Timeline() {
             }
           }()
         }
-      </section>
+      </TimelineStyled>
     </React.Fragment>
   )
 }
