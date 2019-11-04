@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import "../../styles/main.scss";
 import EventOverview from "../EventOverview/EventOverview";
-import Date from "./Date.style"
 import EventStyled from "./EventStyled.style";
 // import Network from "../assets/img/Network.svg";
 // import Launch from "../assets/img/Launch.svg";
@@ -25,7 +24,7 @@ function Event(props) {
     <React.Fragment>
       <EventStyled className="main--left--element" onClick={toggleClass}>
         <div className="main--left--element--date">
-          <Date className="is__date">{props.data.gsx$date.$t}</Date>
+          <h3 className="is__date">{props.data.gsx$date.$t}</h3>
         </div>
         <div className="main--left--element--img">
           <img src={props.data.gsx$category.$t} alt="Icon" className="is__element__img" width="60px"></img>
