@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import "../../styles/main.scss";
 import EventOverview from "../EventOverview/EventOverview";
 import Date from "./Date.style"
+import EventStyled from "./EventStyled.style";
 // import Network from "../assets/img/Network.svg";
 // import Launch from "../assets/img/Launch.svg";
 // import Ai from "../assets/img/Ai.svg";
@@ -22,7 +23,7 @@ function Event(props) {
 
   return (
     <React.Fragment>
-      <div className="main--left--element" onClick={toggleClass}>
+      <EventStyled className="main--left--element" onClick={toggleClass}>
         <div className="main--left--element--date">
           <Date className="is__date">{props.data.gsx$date.$t}</Date>
         </div>
@@ -34,7 +35,7 @@ function Event(props) {
           <p className="is__content__element">{props.data.gsx$description.$t}</p>
           <p className="is__content__tag__element">#{props.data.gsx$category.$t}</p>
         </div>
-      </div>
+      </EventStyled>
       <section className="main--right is__none" ref={hiddenOverview}>
         <EventOverview data={props.data} closeOverview={toggleClass} />
         {/* <EventOverview data={props.data} closeOverview={arrowClose}  /> */}
