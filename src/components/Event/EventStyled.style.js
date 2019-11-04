@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import variable from "../../styles/helpers/variables"
 
 const EventStyled = styled.div`
   display: grid;
@@ -9,6 +10,13 @@ const EventStyled = styled.div`
       grid-column: 1/2;
       text-align: center;
       position: relative;
+        h3 {
+          margin-top: 18px;
+          font-size: 1.7rem;
+          font-weight: bold;
+          color: ${variable.$contentColor};
+          line-height: 1;
+        }
     }
     .main--left--element--img {
       grid-column: 2/3;
@@ -41,6 +49,26 @@ const EventStyled = styled.div`
       &:hover{
         box-shadow: $shadowBox;
         cursor: pointer;
+      }
+      .is__title__element {
+        font-size: 1.8rem;
+        font-weight: bold;
+        letter-spacing: .1rem;
+        color: $contentColor;
+      }
+      .is__content__element {
+        font-size: 1.4rem;
+        font-weight: 300;
+        line-height: 1.8rem;
+        letter-spacing: 0.02rem;
+        color: $contentColor;
+      }
+      .is__content__tag__element {
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: .02rem;
+        color : ${variable.$tagColor}
       }
     }
 
