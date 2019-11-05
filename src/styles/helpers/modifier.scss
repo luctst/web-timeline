@@ -146,25 +146,25 @@
 //     border-bottom: 1px solid #333;
 //     cursor: text;
 // }
-.is__select {
-    color: $contentColor;
-    background: none;
-    border: none;
-    border-radius: 0; 
-    font-size: 1.6rem;
-}
-.is__select:hover {
-    cursor: pointer; 
-}
+// .is__select {
+//     color: $contentColo
+//     background: none;
+//     border: none;
+//     border-radius: 0; 
+//     font-size: 1.6rem;
+// }
+// .is__select:hover {
+//     cursor: pointer; 
+// }
 
-.is__sticky {
-    position: fixed;    
-    top: 0;
-    width: 100%;
-    z-index: 10;
-    min-height: 5rem;
+// .is__sticky {
+//     position: fixed;    
+//     top: 0;
+//     width: 100%;
+//     z-index: 10;
+//     min-height: 5rem;
 
-}
+// }
 .sticky + #app {
     padding-top: 65px; 
 }
