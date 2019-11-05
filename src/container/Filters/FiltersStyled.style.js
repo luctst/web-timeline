@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import variable from "../../styles/helpers/variables"
 
 const FiltersStyled = styled.div`
   height: 6rem;
@@ -8,6 +9,14 @@ const FiltersStyled = styled.div`
   display: flex;
   background-color: #fff;
   padding-left: 2%;
+
+  .is__sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    min-height: 5rem;
+  }
 
   .header--infobar--date {
     display: flex;
@@ -29,6 +38,18 @@ const FiltersStyled = styled.div`
     }
     &--categories {
       flex: 0 0 15%;
+    }
+  }
+  .header--infobar--categories {
+    .is__select {
+      color: ${variable.inputColor};
+      background: none;
+      border: none;
+      border-radius: 0;
+      font-size: 1.6rem;
+        :hover {
+          cursor: pointer;
+        }
     }
   }
   &--date {
