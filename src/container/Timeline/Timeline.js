@@ -19,8 +19,8 @@ function Timeline() {
 
   useEffect(() => {
     fetch(`https://spreadsheets.google.com/feeds/list/${process.env.REACT_APP_KEY}/1/public/values?alt=json`)
-      .then(response => response.json())
-      .then(dataParsed => setData([...dataParsed.feed.entry]))
+    .then(response => response.json())
+    .then(dataParsed => setData([...dataParsed.feed.entry]))
   }, []);
 
   function handleChangeCategory(el) {
@@ -56,10 +56,25 @@ function Timeline() {
     document.documentElement.scrollTop = 0;
   }
 
+    function stickyFiltersScroll() {
+      // window.addEventListener("scroll", stickyFiltersScroll());
+      alert("y'a du scroll");
+      console.log(document.querySelector(".t"));
+      
+    }
+
+
   return (
     <React.Fragment>
       <ButtonTopStyled onClick={topFunction}><i className="fas fa-arrow-up"></i></ButtonTopStyled>
-      <Filters changedDataOrder={() => setOrder(!orderByDesc)} changedCategory={handleChangeCategory} handleChangedSearchInput={e => handleOnChange(e)}  searchFilter={e => handleClickFilter(e)} />
+      <Filters
+        className="t"
+        changedDataOrder={() => setOrder(!orderByDesc)}
+        changedCategory={handleChangeCategory}
+        handleChangedSearchInput={e => handleOnChange(e)}
+        searchFilter={e => handleClickFilter(e)}
+        stickyFilters={stickyFiltersScroll}
+      />
       <TimelineStyled className="main--left">
         {
           function () {
