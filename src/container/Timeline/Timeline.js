@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Event from "../../components/Event/Event";
 import Filters from '../Filters/Filters';
 import Loader from "../../components/Loader/Loader";
 import ButtonTopStyled from "../styled/ButtonTopStyled.style";
 import TimelineStyled from "./TimelineStyled.style";
+import FiltersStickyStyled from "./FiltersStickyStyled.style";
 
 function Timeline() {
   const [data, setData] = useState([])
@@ -56,25 +57,49 @@ function Timeline() {
     document.documentElement.scrollTop = 0;
   }
 
-    function stickyFiltersScroll() {
-      // window.addEventListener("scroll", stickyFiltersScroll());
-      alert("y'a du scroll");
-      console.log(document.querySelector(".t"));
+    // function stickyFiltersScroll() {
+    //   // window.addEventListener("scroll", stickyFiltersScroll());
+    //   // alert("y'a du scroll");
+    //   console.log(document.querySelector(".t"));
+    //   const filters = document.querySelector(".t");
+    //   const sticky = filters.offsetTop;
+    //   console.log(sticky);
+
+    // }
+
+    const [isSticky, setSticky] = useState(false);
+    const ref = useRef(null);
+    const handleScroll = () => {
+      console.log(ref.current.getBoundingClientRect().y);
+      console.log(isSticky);
       
-    }
+      
+      setSticky(ref.current.getBoundingClientRect().top <= 0);
+    };
+
+    useEffect(() => {
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+        window.removeEventListener('scroll', () => handleScroll);
+      }
+
+    }, []);
 
 
   return (
     <React.Fragment>
       <ButtonTopStyled onClick={topFunction}><i className="fas fa-arrow-up"></i></ButtonTopStyled>
-      <Filters
-        className="t"
-        changedDataOrder={() => setOrder(!orderByDesc)}
-        changedCategory={handleChangeCategory}
-        handleChangedSearchInput={e => handleOnChange(e)}
-        searchFilter={e => handleClickFilter(e)}
-        stickyFilters={stickyFiltersScroll}
-      />
+      <FiltersStickyStyled className={`sticky-wrapper${isSticky ? ' sticky' : '' }`} ref={ref}>
+        <Filters
+          className="t"
+          changedDataOrder={() => setOrder(!orderByDesc)}
+          changedCategory={handleChangeCategory}
+          handleChangedSearchInput={e => handleOnChange(e)}
+          searchFilter={e => handleClickFilter(e)}
+          // onscroll={stickyFiltersScroll}
+        />
+      </FiltersStickyStyled>
       <TimelineStyled className="main--left">
         {
           function () {

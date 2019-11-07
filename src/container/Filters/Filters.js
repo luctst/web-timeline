@@ -9,19 +9,19 @@ const Filters = props => {
   const filterImg = useRef(null);
   const categories = [...categoryData.category]
 
-  const [isSticky, setSticky] = useState(false);
-  const ref = useRef(null);
-  const handleScroll = () => {
-    setSticky(ref.current.getBoundingClientRect().top <= 0);
-  };
+  // const [isSticky, setSticky] = useState(false);
+  // const ref = useRef(null);
+  // const handleScroll = () => {
+  //   setSticky(ref.current.getBoundingClientRect().top <= 0);
+  // };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', () => handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('scroll', () => handleScroll);
+  //   };
+  // }, []);
 
   function changedOrderArrow() {
     if (filterImg.current.style.transform === '') filterImg.current.style.transform = 'rotate(180deg)';
@@ -31,6 +31,10 @@ const Filters = props => {
   }
 
   // function stickyFiltersScroll() {
+  //   console.log(document.querySelector(".header--infobar"));
+  //     const filters = document.querySelector(".header--infobar");
+  //     const sticky = filters.offsetTop;
+  //     console.log(sticky);
   //   // console.log(e);
   //   // let element = e.target;
   //   // if (element.scrollHeight - element.scrollTop === element.clientHeight) {
@@ -54,10 +58,10 @@ const Filters = props => {
 
   return (
     <React.Fragment>
-      <div className={`is__${isSticky ? 'sticky' : ''}`} ref={ref}>
+      {/* <div className={`is__${isSticky ? 'sticky' : ''}`} ref={ref}> */}
 
-      <FiltersStyled className="header--infobar">
-      {/* <FiltersStyled className="header--infobar" onScroll={stickyFiltersScroll}> */}
+      <FiltersStyled className="header--infobar sticky--inner">
+      {/* <FiltersStyled className="header--infobar is__sticky" onScroll={stickyFiltersScroll} ref={ref}> */}
         <div className="header--infobar--date" onClick={changedOrderArrow}>
           <img src={SortByDate} alt="icon"></img>
           <p className="is__sort__date">Sort by <span>Date</span></p>
@@ -78,7 +82,7 @@ const Filters = props => {
           <SearchBar handleChangedSearchInput={props.handleChangedSearchInput} searchFilter={props.searchFilter} />
         </div>
       </FiltersStyled>
-      </div>
+      {/* </div> */}
 
     </React.Fragment>
   )

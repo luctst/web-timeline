@@ -10,14 +10,6 @@ const FiltersStyled = styled.div`
   background-color: #fff;
   padding-left: 2%;
 
-  .is__sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-    min-height: 5rem;
-  }
-
   .header--infobar--date {
     display: flex;
     :hover {
