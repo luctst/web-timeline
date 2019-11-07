@@ -57,40 +57,30 @@ function Timeline() {
     document.documentElement.scrollTop = 0;
   }
 
-    // function stickyFiltersScroll() {
-    //   // window.addEventListener("scroll", stickyFiltersScroll());
-    //   // alert("y'a du scroll");
-    //   console.log(document.querySelector(".t"));
-    //   const filters = document.querySelector(".t");
-    //   const sticky = filters.offsetTop;
-    //   console.log(sticky);
+    // const [isSticky, setSticky] = useState(false);
+    // const ref = useRef(null);
+    // const handleScroll = () => {
+    //   console.log(ref.current.getBoundingClientRect().y);
+    //   console.log(isSticky);
 
-    // }
+    //   setSticky(ref.current.getBoundingClientRect().top <= 0);
+    // };
 
-    const [isSticky, setSticky] = useState(false);
-    const ref = useRef(null);
-    const handleScroll = () => {
-      console.log(ref.current.getBoundingClientRect().y);
-      console.log(isSticky);
-      
-      
-      setSticky(ref.current.getBoundingClientRect().top <= 0);
-    };
+    // useEffect(() => {
+    //   window.addEventListener('scroll', handleScroll);
 
-    useEffect(() => {
-      window.addEventListener('scroll', handleScroll);
+    //   return () => {
+    //     window.removeEventListener('scroll', () => handleScroll);
+    //   }
 
-      return () => {
-        window.removeEventListener('scroll', () => handleScroll);
-      }
-
-    }, []);
+    // }, []);
 
 
   return (
     <React.Fragment>
       <ButtonTopStyled onClick={topFunction}><i className="fas fa-arrow-up"></i></ButtonTopStyled>
-      <FiltersStickyStyled className={`sticky-wrapper${isSticky ? ' sticky' : '' }`} ref={ref}>
+      {/* <FiltersStickyStyled className={`sticky-wrapper${isSticky ? ' sticky' : '' }`} ref={ref}> */}
+      <FiltersStickyStyled className="sticky-wrapper sticky">
         <Filters
           className="t"
           changedDataOrder={() => setOrder(!orderByDesc)}
