@@ -8,7 +8,7 @@ function EventOverview(props) {
         <div className="main--right--element--wrapper--description">
           <h2 className="is__">Overview</h2>
           <div className="separator"></div>
-          <p>{props.data.gsx$description.$t}</p>
+          <p>{props.data.gsx$content.$t}</p>
           <h2 className="is__">Links</h2>
           <p><a href={`${props.data.gsx$linkone.$t}`}>{props.data.gsx$linkone.$t}</a></p>
           <p><a href={`${props.data.gsx$linktwo.$t}`}>{props.data.gsx$linktwo.$t}</a></p>
