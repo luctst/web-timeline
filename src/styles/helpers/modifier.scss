@@ -166,16 +166,16 @@
 
 // }
 
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-    min-height: 5rem;
-}
+// .sticky {
+//     position: fixed;
+//     top: 50%;
+//     width: 100%;
+//     z-index: 1000;
+//     min-height: 5rem;
+// }
 
 .sticky + #app {
-    padding-top: 65px; 
+    padding-top: 65px;
 }
 .is__svg {
     width: 10%;
