@@ -7,7 +7,7 @@ const FiltersStyled = styled.div`
   align-items: center;
   box-shadow: $shadowBox;
   display: flex;
-  background-color: #fff;
+  background-color: #FFFAFA;
   padding-left: 2%;
 
   .header--infobar--date {
