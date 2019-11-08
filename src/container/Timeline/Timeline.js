@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Event from "../../components/Event/Event";
 import Filters from '../Filters/Filters';
 import Loader from "../../components/Loader/Loader";
