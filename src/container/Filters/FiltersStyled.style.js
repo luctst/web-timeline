@@ -3,11 +3,12 @@ import variable from "../../styles/helpers/variables"
 
 const FiltersStyled = styled.div`
   height: 6rem;
+  width: 101%;
   margin-bottom: 5%;
   align-items: center;
   box-shadow: $shadowBox;
   display: flex;
-  background-color: #FFFAFA;
+  background-color: #fff;
   padding-left: 2%;
 
   .header--infobar--date {

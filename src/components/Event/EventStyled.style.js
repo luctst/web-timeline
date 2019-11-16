@@ -21,7 +21,7 @@ const EventStyled = styled.div`
     .main--left--element--img {
       grid-column: 2/3;
       text-align: center;
-      background-color: white;
+      // background-color: white;
       position: relative;
       z-index: 9;
 
@@ -41,7 +41,7 @@ const EventStyled = styled.div`
       border: 0.1rem solid #dbe8fa;
       padding: 15px 10px;
       border-radius: .8rem;
-      background-color: #fff;
+      background-color: #5C6174;
 
       h2, p {
         margin-bottom: 2%;
