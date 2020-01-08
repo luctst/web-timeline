@@ -1,43 +1,18 @@
 {
-  "name": "Web-Timeline",
-  "version": "",
-  "description": "",
-  "main": "",
+  "private": true,
+  "name": "web-timeline",
+  "version": "1.0.0",
+  "description": "find all dates that have marked internet 🕸️🕸️",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/luctst/crispy-octo-adventure.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "",
-  "bugs": {
-    "url": "https://github.com/luctst/crispy-octo-adventure/issues"
-  },
-  "homepage": "https://github.com/luctst/crispy-octo-adventure#readme",
-  "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.2.3",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
-    "css-loader": "^2.1.0",
-    "file-loader": "^3.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.5.0",
-    "node-sass": "^4.11.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "sass-loader": "^7.1.0",
-    "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
-  },
+  "author": "Tostee Lucas, <lucas.tostee@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
-    "@tarekraafat/autocomplete.js": "^3.2.2"
+    "next": "^9.1.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   }
 }
