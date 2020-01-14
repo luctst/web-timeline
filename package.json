@@ -12,6 +12,7 @@
   "author": "Tostee Lucas, <lucas.tostee@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "mongodb": "^3.4.1",
     "next": "^9.1.7",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
