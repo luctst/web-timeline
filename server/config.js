@@ -18,5 +18,7 @@ if (process.env.NODE_ENV === "development") {
 
 module.exports = {
     databaseUrl: process.env.DB_URL,
+    databaseUser: process.env.DB_USER,
+    databaseAccess: process.env.MONGO_KEY,
     url,
 };
