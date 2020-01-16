@@ -7,13 +7,13 @@ const config = require("../config");
  * @param {Boolean} error If true reponse should return an 404 header.
  * @param {Object} reponse The reponse object return on http request.
  */
-function responseHeader(error = false, reponse) {
+function responseHeader(reponse, error = false) {
   const defaultHeader = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Expose-Headers":
-      "ETag, Link, Location, Retry-After, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval",
+    "ETag, Link, Location, Retry-After, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval",
     "content-type": "application/json; charset=utf-8",
-    connection: "close",
+    "connection": "close",
     "Content-Security-Policy": "default-src 'none'",
     Server: `${config.url}.com`,
     "X-XSS-Protection": "1;mode=block",
@@ -43,7 +43,7 @@ function responseHeader(error = false, reponse) {
   });
 }
 
-module.exports = async (req, res, routesApi) => {
+module.exports = (req, res, routesApi) => {
   req.on("error", error => {
     // Check if there is no error on request.
     res.statusCode = req.statusCode;
@@ -58,6 +58,7 @@ module.exports = async (req, res, routesApi) => {
 
   const { pathname, query } = url.parse(req.url, true);
   const methodAllowed = ["GET", "POST", "PUT", "DELETE"];
+  let reponseForClient;
 
   if (!routesApi.includes(pathname) || !methodAllowed.includes(req.method)) {
     responseHeader(true, res);
@@ -70,6 +71,13 @@ module.exports = async (req, res, routesApi) => {
     );
   }
 
-  // TODO: Redirect to the good api function who match the pathname property.
-  res.end(pathname);
+  if (pathname === '/') {
+    reponseForClient = require("./routes/default")({header: req.headers, method: req.method, data: req.body});
+
+    reponseForClient.status ? responseHeader(res) : responseHeader(res, true);
+    res.end(JSON.stringify(reponseForClient));
+  } else {
+    reponseForClient = require(`./routes${pathname}`)({ header: req.headers, method: req.method, data: req.body });
+    res.end(reponseForClient);
+  }
 };
